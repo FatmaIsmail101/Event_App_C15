@@ -1,3 +1,4 @@
+import 'package:evently/core/constants/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -6,9 +7,11 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('LoginView'),
-      ),
+      body: Column(
+        children: [
+          Image(image: AssetImage(AppAssets.appLogo))
+        ],
+      )
     );
   }
 }
