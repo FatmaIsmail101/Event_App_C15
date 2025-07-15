@@ -7,7 +7,8 @@ abstract class AppThemeManager{
       bodyLarge: GoogleFonts.inter(
         fontSize: 16,fontWeight: FontWeight.w500
          , color: ColorPallete.black
-      )
+      ),
+
     ),
     primaryColor: Colors.white
   );
