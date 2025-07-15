@@ -1,4 +1,5 @@
 import 'package:evently/core/constants/app_assets.dart';
+import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bounceable/flutter_bounceable.dart';
@@ -33,7 +34,9 @@ class OnBoardingViewThree extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: Bounceable(onTap: (){
                       controller.animateToPage(2, duration: Duration(milliseconds: 500), curve: Curves.ease);
-                    }, child: Container(
+                    Navigator.pushNamed(context, PageRoutesName.login);
+
+                      }, child: Container(
                         width: 52,height: 52,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
