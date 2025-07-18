@@ -137,7 +137,7 @@ class LoginView extends StatelessWidget {
 mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ImageIcon(AssetImage(AppAssets.google),
-                      color: ,),
+                      ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
