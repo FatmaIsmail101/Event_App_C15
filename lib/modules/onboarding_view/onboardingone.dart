@@ -13,9 +13,9 @@ final PageController controller;
 
         child:
             Scaffold(
-              body: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: SingleChildScrollView(
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: 30,
@@ -33,16 +33,18 @@ final PageController controller;
                         alignment: Alignment.bottomRight,
                         child: Bounceable(onTap: (){
                           controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
+
                         }, child: Container(
-                            width: 52,height: 52,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                                color:theme.primaryColor,
-                                border: Border.all(color: theme.primaryColor,
-                                    width: 2)
-                            ),
-                            child: Icon(Icons.arrow_forward_rounded,color: theme.primaryColor,
-                            ))),
+                          width: 37.6,height: 37.6,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50)
+                              ,
+                            border: Border.all(color: Color(0xff5669FF),
+                           )
+                          ),
+                          child: Icon(Icons.arrow_forward_rounded,color: Color(0xff5669FF),
+                          ),
+                        )),
                       )
 
 
