@@ -136,7 +136,21 @@ class LoginView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
 mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ImageIcon(AssetImage(AppAssets.google),
+                      ShaderMask(
+                        shaderCallback: (Rect bounds){
+                          return LinearGradient(begin:
+                          Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Colors.red,
+                              Colors.yellow,
+                              Colors.green,
+                              Colors.blue],
+                            stops: [0.0,0.5,0.5,0.5],).createShader(bounds);
+
+                        },
+                        blendMode: BlendMode.srcATop,
+                        child: ImageIcon(AssetImage(AppAssets.google),
+                        ),
                       ),
 
                       Padding(
@@ -151,7 +165,46 @@ mainAxisAlignment: MainAxisAlignment.center,
                     ],
                   ),),
               ),
-              
+
+              Container(
+                width: 73.28,height: 30.76,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xff5669FF)
+                  ,),borderRadius: BorderRadius.circular(70)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ShaderMask(
+                        shaderCallback: (Rect bounds){
+                          return LinearGradient(begin:
+                          Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.red,
+                          Colors.white,
+                          Colors.blue],
+                          stops: [0.0,0.5,1.0],).createShader(bounds);
+
+                        },
+                        blendMode: BlendMode.srcATop,
+                        child: ImageIcon(AssetImage(AppAssets.en))),
+                    ShaderMask(
+                        shaderCallback: (Rect bounds){
+                          return LinearGradient(begin:
+                          Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Colors.red,
+                              Colors.white,
+                              Colors.black],
+                            stops: [0.0,0.5,1.0],).createShader(bounds);
+
+                        },
+                        blendMode: BlendMode.srcATop,
+                        child: ImageIcon(AssetImage(AppAssets.ar))),
+
+                  ],
+                ),
+              )
             ],
           ),
         ),
