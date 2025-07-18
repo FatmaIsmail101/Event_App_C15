@@ -25,27 +25,49 @@ class OnBoardingViewThree extends StatelessWidget {
                     child: Image(image: AssetImage(AppAssets.appLogoBoarding),
                       width: 159,height: 50,),
                   ),
-                  Image(image: AssetImage(AppAssets.onBoardingOne),
+                  Image(image: AssetImage(AppAssets.onBoardingThree),
                     width: 357,height: 357,),
                   Text("Connect with Friends & Share Moments",style: theme.textTheme.headlineSmall,),
                   Text("Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories."
                     ,style: theme.textTheme.bodyLarge,softWrap: true,),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Bounceable(onTap: (){
-                      controller.animateToPage(2, duration: Duration(milliseconds: 500), curve: Curves.ease);
-                    Navigator.pushNamed(context, PageRoutesName.login);
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Bounceable(onTap: (){
+                          controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
 
-                      }, child: Container(
-                        width: 52,height: 52,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color:theme.primaryColor,
-                            border: Border.all(color: theme.primaryColor,
-                                width: 2)
-                        ),
-                        child: Icon(Icons.arrow_forward_rounded,color: theme.primaryColor,
-                        ))),
+                        }, child: Container(
+                          width: 37.6,height: 37.6,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50)
+                              ,
+                              border: Border.all(color: Color(0xff5669FF),
+                              )
+                          ),
+                          child: Icon(Icons.arrow_back,color: Color(0xff5669FF),
+                          ),
+                        )),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Bounceable(onTap: (){
+                          controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
+
+                        }, child: Container(
+                          width: 37.6,height: 37.6,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50)
+                              ,
+                              border: Border.all(color: Color(0xff5669FF),
+                              )
+                          ),
+                          child: Icon(Icons.arrow_forward_rounded,color: Color(0xff5669FF),
+                          ),
+                        )),
+                      )
+                    ],
                   )
 
 
