@@ -135,30 +135,8 @@ bool isVisible=false;
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ShaderMask(
-                      shaderCallback: (Rect bounds) {
-                        return LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.red, Colors.white, Colors.blue],
-                          stops: [0.0, 0.5, 1.0],
-                        ).createShader(bounds);
-                      },
-                      blendMode: BlendMode.srcATop,
-                      child: ImageIcon(AssetImage(AppAssets.en)),
-                    ),
-                    ShaderMask(
-                      shaderCallback: (Rect bounds) {
-                        return LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.red, Colors.white, Colors.black],
-                          stops: [0.0, 0.5, 1.0],
-                        ).createShader(bounds);
-                      },
-                      blendMode: BlendMode.srcATop,
-                      child: ImageIcon(AssetImage(AppAssets.ar)),
-                    ),
+                   Image.asset(AppAssets.en),
+                    Image.asset(AppAssets.ar,height: 50,),
                   ],
                 ),
               ),
