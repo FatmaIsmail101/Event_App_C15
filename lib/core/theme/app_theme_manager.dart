@@ -13,9 +13,14 @@ abstract class AppThemeManager{
   );
 
   static ThemeData darkTheme=ThemeData(
+
       primaryColor: ColorPallete.primaryColor,
     textTheme: GoogleFonts.interTextTheme().copyWith(
         bodyLarge: GoogleFonts.inter(
+            fontSize: 20,fontWeight: FontWeight.w500
+            , color: ColorPallete.primaryColor
+        ),
+        bodyMedium: GoogleFonts.inter(
             fontSize: 16,fontWeight: FontWeight.w500
             , color: ColorPallete.primaryColor
         )
