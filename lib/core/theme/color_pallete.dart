@@ -7,5 +7,6 @@ abstract class ColorPallete{
   static const Color screenDark=Color(0xff101127);
   static const Color screenLight=Color(0xffF2FEFF);
 static const Color white=Color(0xffFFFFFF);
+static const Color textColorInDark=Color(0xffF4EBDC);
 
 }

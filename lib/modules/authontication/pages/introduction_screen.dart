@@ -1,17 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
+import 'package:evently/core/providers/theme_provider.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/core/widgets/custom_button_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' ;
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:ui' as ui;
+import 'package:provider/provider.dart';
+import 'package:evently/core/providers/theme_provider.dart';
+
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<ThemeProvider>(context);
+
     final theme=Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -105,21 +112,33 @@ class IntroductionScreen extends StatelessWidget {
                     child: Row(
         
                       children: [
-                        Container(
-                            decoration: BoxDecoration(color: ColorPallete.primaryColor,
-                                border: Border.all(color: ColorPallete.primaryColor,
-                                    width: 3.r,style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(35)
-                            ),
-                            child: Image.asset(AppAssets.sun)),
+                        Bounceable(
+                          onTap: () {
+                            provider.changeTheme(ThemeMode.light);
+
+                          },
+                          child: Container(
+                              decoration: BoxDecoration(color: ColorPallete.primaryColor,
+                                  border: Border.all(color: ColorPallete.primaryColor,
+                                      width: 3.r,style: BorderStyle.solid),
+                                  borderRadius: BorderRadius.circular(35)
+                              ),
+                              child: Image.asset(AppAssets.sun)),
+                        ),
                         Spacer(),
-                        Container(
-                            decoration:  BoxDecoration(
-                                border: Border.all(color: ColorPallete.primaryColor,
-                                    width: 3),
-                                borderRadius: BorderRadius.circular(35)
-                            ),
-                            child: Image.asset(AppAssets.moon)),
+                        Bounceable(
+                          onTap: () {
+                            provider.changeTheme(ThemeMode.dark);
+
+                          },
+                          child: Container(
+                              decoration:  BoxDecoration(
+                                  border: Border.all(color: ColorPallete.primaryColor,
+                                      width: 3),
+                                  borderRadius: BorderRadius.circular(35)
+                              ),
+                              child: Image.asset(AppAssets.moon)),
+                        ),
                         
                       ],
                     ),

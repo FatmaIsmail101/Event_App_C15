@@ -1,6 +1,7 @@
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -21,19 +22,19 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
 body: Column(
-  spacing: 100,
+  spacing: 100.h,
   mainAxisAlignment: MainAxisAlignment.center,
   crossAxisAlignment: CrossAxisAlignment.stretch,
 
   children: [
-    SizedBox(height: 150,),
+    SizedBox(height: 142.h,),
     Image(image: AssetImage(AppAssets.appLogo),
-    height: 185,),
+    height: 185.h,),
 const Spacer(),
     Align(
       alignment: Alignment.bottomCenter,
       child: Image(image: AssetImage(AppAssets.copyRightsLogo),
-        height: 85,),
+        height: 85.h,),
     ),
   ],
 ),

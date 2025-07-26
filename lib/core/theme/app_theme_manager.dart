@@ -18,7 +18,8 @@ abstract class AppThemeManager{
             ,fontSize: 20.sp,color: ColorPallete.white),
       ),
       hintColor: ColorPallete.grey,
-      highlightColor: ColorPallete.grey,
+      highlightColor: ColorPallete.textColorInDark,
+
       appBarTheme: AppBarTheme(
         backgroundColor: ColorPallete.screenLight,
 
@@ -28,6 +29,9 @@ abstract class AppThemeManager{
   );
 
   static ThemeData darkTheme=ThemeData(
+      iconTheme: IconThemeData(
+          color:ColorPallete.textColorInDark
+      ),
       primaryColor: ColorPallete.primaryColor,
       scaffoldBackgroundColor: ColorPallete.screenDark,
       textTheme: GoogleFonts.interTextTheme().copyWith(
@@ -40,8 +44,8 @@ abstract class AppThemeManager{
         headlineSmall: GoogleFonts.inter(fontWeight: FontWeight.bold
             ,fontSize: 20,color: ColorPallete.white),
       ),
-      hintColor: ColorPallete.white,
-      highlightColor: ColorPallete.white,
+      hintColor: ColorPallete.textColorInDark,
+      highlightColor: ColorPallete.textColorInDark,
       appBarTheme: AppBarTheme(
         backgroundColor: ColorPallete.screenDark,)
       );
