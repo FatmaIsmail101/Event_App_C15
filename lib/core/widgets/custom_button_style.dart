@@ -6,7 +6,7 @@ class CustomButtonStyle extends StatelessWidget {
   final Widget child;
   final VoidCallback? onTap;
 
-  const CustomButtonStyle({
+   CustomButtonStyle({
     Key? key,
     this.color,
     required this.child,
