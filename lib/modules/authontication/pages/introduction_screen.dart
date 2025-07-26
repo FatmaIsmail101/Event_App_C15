@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/constants/app_string.dart';
+import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class IntroductionScreen extends StatelessWidget {
     final theme=Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(AppAssets.appLogo1,
+        title: Image.asset(AppAssets.appLogoBoarding,
         width: 159,height: 50,),
         centerTitle: true,toolbarHeight: 85,
       ),
@@ -83,7 +84,7 @@ class IntroductionScreen extends StatelessWidget {
         
                       children: [
                         Container(
-                            decoration: BoxDecoration(
+                            decoration: BoxDecoration(color: ColorPallete.primaryColor,
                                 border: Border.all(color: ColorPallete.primaryColor,
                                     width: 3,style: BorderStyle.solid),
                                 borderRadius: BorderRadius.circular(35)
@@ -96,11 +97,28 @@ class IntroductionScreen extends StatelessWidget {
                                     width: 3),
                                 borderRadius: BorderRadius.circular(35)
                             ),
-                            child: Image.asset(AppAssets.ar))
+                            child: Image.asset(AppAssets.moon)),
+                        
                       ],
                     ),
                   )
                 ],
+              ),
+              Container(
+                width: double.infinity,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.all(16),
+                      backgroundColor: ColorPallete.primaryColor,
+                      foregroundColor: ColorPallete.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)
+                      )
+                    ),
+                    onPressed: (){
+                  Navigator.pushReplacementNamed(context, PageRoutesName.onBoardingScreen);
+                }, child: Text(AppStrings.introBTN)
+                ),
               )
             ],
           ),

@@ -53,8 +53,9 @@ class OnBoardingViewThree extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomRight,
                         child: Bounceable(onTap: (){
-                          controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
 
+                          controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
+Navigator.pushReplacementNamed(context, PageRoutesName.login);
                         }, child: Container(
                           width: 37.6,height: 37.6,
                           decoration: BoxDecoration(

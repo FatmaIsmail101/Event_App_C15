@@ -39,7 +39,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               count:3,
           effect: ExpandingDotsEffect(
             activeDotColor: ColorPallete.primaryColor,
-            dotColor: ColorPallete.primaryTextColorLight,
+            dotColor: ColorPallete.primaryColor,
             dotHeight: 10,
             dotWidth: 10
           ),),
