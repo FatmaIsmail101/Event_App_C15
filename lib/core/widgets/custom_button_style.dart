@@ -6,12 +6,12 @@ class CustomButtonStyle extends StatelessWidget {
   final Widget child;
   final VoidCallback? onTap;
 
-   CustomButtonStyle({
-    Key? key,
+   const CustomButtonStyle({
+    super.key,
     this.color,
     required this.child,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

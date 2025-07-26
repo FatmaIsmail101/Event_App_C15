@@ -3,7 +3,11 @@ import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/constants/app_string.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
+import 'package:evently/core/widgets/custom_button_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:ui' as ui;
 
 class IntroductionScreen extends StatelessWidget {
   const IntroductionScreen({super.key});
@@ -18,50 +22,69 @@ class IntroductionScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
-            spacing: 20,
+            spacing: 20.h,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(AppAssets.intro1),
-              Text(AppStrings.personalizeYourExperience.tr(),style:theme.textTheme.bodyLarge!.copyWith(
+              Text(  "introduction_title".tr(),style:theme.textTheme.bodyLarge!.copyWith(
                 color: ColorPallete.primaryColor,fontWeight: FontWeight.bold
               ) ,),
-              Text(AppStrings.introSubTitle.tr(),style: theme.textTheme.bodyMedium),
+              Text("introduction_subtitle".tr(),style: theme.textTheme.bodyMedium),
         
               Row(
         
                 children: [
-                  Text(AppStrings.language.tr(),style:theme.textTheme.bodyLarge!.copyWith(color:
+                  Text("language".tr(),style:theme.textTheme.bodyLarge!.copyWith(color:
                   ColorPallete.primaryColor,fontWeight: FontWeight.bold) ,),
                   Spacer(),
-                  Container(
-                    width: 74,height: 31,
-                    decoration:
-                    BoxDecoration(
-                      border: Border.all(color: ColorPallete.primaryColor,
-                      width: 3,style: BorderStyle.solid),
-                      borderRadius: BorderRadius.circular(25)
-                    ),
-                    child: Row(
-        
-                      children: [
-                        Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(color: ColorPallete.primaryColor,
-                                    width: 3,style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(35)
-                            ),
-                            child: Image.asset(AppAssets.en)),
-                        Spacer(),
-                        Container(
-                            decoration:  BoxDecoration(
-                                border: Border.all(color: ColorPallete.primaryColor,
-                                    width: 3),
-                                borderRadius: BorderRadius.circular(35)
-                            ),
-                            child: Image.asset(AppAssets.ar))
-                      ],
+                  Directionality(
+                    textDirection: ui.TextDirection.ltr,
+                    child: Container(
+                      width: 74.w,height: 31.h,
+                      decoration:
+                      BoxDecoration(
+                        border: Border.all(color: ColorPallete.primaryColor,
+                        width: 3,style: BorderStyle.solid),
+                        borderRadius: BorderRadius.circular(25.r)
+                      ),
+                      child: Row(
+
+                        children: [
+                          Bounceable(
+                            onTap: (){
+                              context.setLocale(Locale('en'));
+
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: ColorPallete.primaryColor,
+                                        width: 3.r,style: context.locale.toString()=="en"?
+                                        BorderStyle.solid:BorderStyle.none),
+                                    borderRadius: BorderRadius.circular(35.r)
+                                ),
+                                child: Image.asset(AppAssets.en)),
+                          ),
+                          Spacer(),
+                          Bounceable(
+                            onTap: (){
+                              context.setLocale(Locale('ar'));
+
+                            },
+                            child: Container(
+                              width: 30.w,
+                                decoration:  BoxDecoration(
+
+                                    border: Border.all(color: ColorPallete.primaryColor,
+                                        width: 3.r,style: context.locale.toString()=="ar"?
+                                        BorderStyle.solid:BorderStyle.none),
+                                    borderRadius: BorderRadius.circular(35.r)
+                                ),
+                                child: Image.asset(AppAssets.ar)),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
@@ -69,16 +92,16 @@ class IntroductionScreen extends StatelessWidget {
               Row(
         
                 children: [
-                  Text(AppStrings.theme.tr(),style:theme.textTheme.bodyLarge!.copyWith(color:
+                  Text("theme".tr(),style:theme.textTheme.bodyLarge!.copyWith(color:
                   ColorPallete.primaryColor,fontWeight: FontWeight.bold) ,),
                   Spacer(),
                   Container(
-                    width: 74,height: 31,
+                    width: 74.w,height: 31.h,
                     decoration:
                     BoxDecoration(
                         border: Border.all(color: ColorPallete.primaryColor,
-                            width: 3,style: BorderStyle.solid),
-                        borderRadius: BorderRadius.circular(25)
+                            width: 3.r,style: BorderStyle.solid),
+                        borderRadius: BorderRadius.circular(25.r)
                     ),
                     child: Row(
         
@@ -86,7 +109,7 @@ class IntroductionScreen extends StatelessWidget {
                         Container(
                             decoration: BoxDecoration(color: ColorPallete.primaryColor,
                                 border: Border.all(color: ColorPallete.primaryColor,
-                                    width: 3,style: BorderStyle.solid),
+                                    width: 3.r,style: BorderStyle.solid),
                                 borderRadius: BorderRadius.circular(35)
                             ),
                             child: Image.asset(AppAssets.sun)),
@@ -104,20 +127,15 @@ class IntroductionScreen extends StatelessWidget {
                   )
                 ],
               ),
-              Container(
-                width: double.infinity,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.all(16),
-                      backgroundColor: ColorPallete.primaryColor,
-                      foregroundColor: ColorPallete.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16)
-                      )
-                    ),
-                    onPressed: (){
-                  Navigator.pushReplacementNamed(context, PageRoutesName.onBoardingScreen);
-                }, child: Text(AppStrings.introBTN)
+              SizedBox(
+                width: 1.sw,
+                child: CustomButtonStyle(child: Text("intro_btn".tr()
+                ,style: theme.textTheme.headlineSmall!.copyWith(
+                    fontWeight: FontWeight.w500
+                  )
+                ),onTap: (){
+                  Navigator.pushNamed(context, PageRoutesName.onBoardingScreen);
+                },
                 ),
               )
             ],

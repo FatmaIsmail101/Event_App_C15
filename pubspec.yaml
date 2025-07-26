@@ -38,6 +38,7 @@ dependencies:
   flutter_bounceable: ^1.2.0
   easy_localization: ^3.0.8
   smooth_page_indicator: ^1.2.1
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

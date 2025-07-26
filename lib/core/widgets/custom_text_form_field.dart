@@ -11,7 +11,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextEditingController? textEditingController;
   final void Function(String)? onFieldSubmitted;
 
-  CustomTextFormField({
+  const CustomTextFormField({
     super.key,
     required this.prefixIcon,
     required this.hintText,

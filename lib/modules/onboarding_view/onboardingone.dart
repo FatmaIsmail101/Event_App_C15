@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 class OnBoardingViewOne extends StatelessWidget {
-   OnBoardingViewOne({super.key,required this.controller});
+   const OnBoardingViewOne({super.key,required this.controller});
 
 final PageController controller;
   @override

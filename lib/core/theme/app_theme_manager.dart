@@ -1,5 +1,6 @@
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppThemeManager{
@@ -8,13 +9,13 @@ abstract class AppThemeManager{
       scaffoldBackgroundColor: ColorPallete.screenLight,
       textTheme: GoogleFonts.interTextTheme().copyWith(
         bodySmall: GoogleFonts.inter(fontWeight: FontWeight.bold
-            ,fontSize: 12,color: ColorPallete.screenLight),
+            ,fontSize: 12.sp,color: ColorPallete.screenLight),
         bodyMedium: GoogleFonts.inter(fontWeight: FontWeight.bold
-            ,fontSize: 14,color: ColorPallete.black),
+            ,fontSize: 14.sp,color: ColorPallete.black),
         bodyLarge: GoogleFonts.inter(fontWeight: FontWeight.bold
-            ,fontSize: 16,color: ColorPallete.black),
-        headlineSmall: GoogleFonts.inter(fontWeight: FontWeight.bold
-            ,fontSize: 20,color: ColorPallete.white),
+            ,fontSize: 16.sp,color: ColorPallete.black),
+        headlineSmall: GoogleFonts.inter(fontWeight: FontWeight.w500
+            ,fontSize: 20.sp,color: ColorPallete.white),
       ),
       hintColor: ColorPallete.grey,
       highlightColor: ColorPallete.grey,

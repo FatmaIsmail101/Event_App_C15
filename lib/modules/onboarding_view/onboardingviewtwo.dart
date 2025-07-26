@@ -4,7 +4,7 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import '../../core/constants/app_assets.dart';
 
 class OnBoardingViewTwo extends StatelessWidget {
-   OnBoardingViewTwo({super.key,required this.controller});
+   const OnBoardingViewTwo({super.key,required this.controller});
 final PageController controller;
   @override
   Widget build(BuildContext context) {
