@@ -1,9 +1,9 @@
 import 'package:evently/core/constants/app_assets.dart';
+import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/core/widgets/custom_button_style.dart';
 import 'package:evently/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bounceable/flutter_bounceable.dart';
 
 class LoginView extends StatelessWidget {
    LoginView({super.key});
@@ -59,19 +59,21 @@ bool isVisible=false;
                 child: CustomButtonStyle(child: Text("Login",
                 style: theme.textTheme.bodyMedium!.copyWith(
                   color: Colors.white
-                ),),onTap: (){},),
+                ),),onTap: (){
+                  Navigator.pushReplacementNamed(context, PageRoutesName.introductionScreen);
+                },),
               ),
               Row(
                 children: [
                   Text(
                     " Don’t Have Account ?",
-                    style: theme.textTheme.bodyLarge,
+                    style: theme.textTheme.bodyMedium,
                   ),
                   TextButton(
                     onPressed: () {},
                     child: Text(
                       "Create Account ",
-                      style: theme.textTheme.bodyLarge!.copyWith(
+                      style: theme.textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         decoration: TextDecoration.underline,
                         fontStyle: FontStyle.italic,
@@ -110,7 +112,7 @@ bool isVisible=false;
               ),
               SizedBox(
                 width: double.infinity,
-                child: CustomButtonStyle(child: Row(
+                child: CustomButtonStyle(onTap: (){},color: Colors.white,child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
@@ -122,7 +124,7 @@ bool isVisible=false;
                           color: ColorPallete.primaryColor
                       ),),
                   ],
-                ),onTap: (){},color: Colors.white,),
+                ),),
               ),
 
               Container(

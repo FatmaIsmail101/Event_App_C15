@@ -2,7 +2,7 @@ import 'package:evently/core/theme/color_pallete.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonStyle extends StatelessWidget {
-   CustomButtonStyle({super.key
+   const CustomButtonStyle({super.key
    ,this.color,
    required this.child,
      this.onTap
