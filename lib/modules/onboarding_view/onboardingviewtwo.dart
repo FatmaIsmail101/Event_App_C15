@@ -1,3 +1,6 @@
+import 'dart:ui' as ui;
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 
@@ -25,47 +28,51 @@ final PageController controller;
                   ),
                   Image(image: AssetImage(AppAssets.onBoardingTwo),
                     width: 357,height: 357,),
-                  Text("Effortless Event Planning",style: theme.textTheme.headlineSmall,),
-                  Text("Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests."
+                  Text("introduction_title2".tr(),style: theme.textTheme.headlineSmall,),
+                  Text("introduction_subtitle2".tr()
                     ,style: theme.textTheme.bodyLarge,softWrap: true,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Bounceable(onTap: (){
-                          controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
+                  Directionality(
+                    textDirection: ui.TextDirection.ltr,
 
-                        }, child: Container(
-                          width: 37.6,height: 37.6,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50)
-                              ,
-                              border: Border.all(color: Color(0xff5669FF),
-                              )
-                          ),
-                          child: Icon(Icons.arrow_back,color: Color(0xff5669FF),
-                          ),
-                        )),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Bounceable(onTap: (){
-                          controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Bounceable(onTap: (){
+                            controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
 
-                        }, child: Container(
-                          width: 37.6,height: 37.6,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50)
-                              ,
-                              border: Border.all(color: Color(0xff5669FF),
-                              )
-                          ),
-                          child: Icon(Icons.arrow_forward_rounded,color: Color(0xff5669FF),
-                          ),
-                        )),
-                      )
-                    ],
+                          }, child: Container(
+                            width: 37.6,height: 37.6,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50)
+                                ,
+                                border: Border.all(color: Color(0xff5669FF),
+                                )
+                            ),
+                            child: Icon(Icons.arrow_back,color: Color(0xff5669FF),
+                            ),
+                          )),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Bounceable(onTap: (){
+                            controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
+
+                          }, child: Container(
+                            width: 37.6,height: 37.6,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50)
+                                ,
+                                border: Border.all(color: Color(0xff5669FF),
+                                )
+                            ),
+                            child: Icon(Icons.arrow_forward_rounded,color: Color(0xff5669FF),
+                            ),
+                          )),
+                        )
+                      ],
+                    ),
                   )
 
 

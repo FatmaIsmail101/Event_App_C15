@@ -11,11 +11,13 @@ class CustomButtonStyle extends StatelessWidget {
     this.color,
     required this.child,
     this.onTap,
+     this.heroTag
   });
-
+final String?heroTag;
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+      heroTag: heroTag,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: ColorPallete.primaryColor),

@@ -1,8 +1,13 @@
+import 'dart:ui' as ui;
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/core/widgets/custom_button_style.dart';
 import 'package:evently/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -24,7 +29,7 @@ class LoginView extends StatelessWidget {
                 width: 136,
               ),
               CustomTextFormField(
-                hintText: "Email",
+                hintText: "email".tr(),
                 prefixIcon: ImageIcon(
                   AssetImage(AppAssets.email),
                   color: ColorPallete.grey,
@@ -37,14 +42,14 @@ class LoginView extends StatelessWidget {
                   AssetImage(AppAssets.password),
                   color: ColorPallete.grey,
                 ),
-                hintText: "Password",
+                hintText: "password".tr(),
               ),
               Align(
                 alignment: Alignment.topRight,
                 child: TextButton(
                   onPressed: () {},
                   child: Text(
-                    "Forget password ?",
+                    "forget_password".tr(),
                     style: theme.textTheme.bodyLarge!.copyWith(
                       decoration: TextDecoration.underline,
                       fontStyle: FontStyle.italic,
@@ -58,7 +63,7 @@ class LoginView extends StatelessWidget {
                 width: double.infinity,
                 child: CustomButtonStyle(
                   child: Text(
-                    "Login",
+                    "login".tr(),
                     style: theme.textTheme.bodyMedium!.copyWith(
                       color: Colors.white,
                     ),
@@ -71,13 +76,13 @@ class LoginView extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    " Don’t Have Account ?",
+                    "dont_have".tr(),
                     style: theme.textTheme.bodyMedium,
                   ),
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      "Create Account ",
+                      "create_acc".tr(),
                       style: theme.textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         decoration: TextDecoration.underline,
@@ -100,7 +105,7 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Or",
+                    "or".tr(),
                     style: theme.textTheme.bodyLarge!.copyWith(
                       color: ColorPallete.primaryColor,
                     ),
@@ -118,6 +123,7 @@ class LoginView extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: CustomButtonStyle(
+                  heroTag: "login",
                   onTap: () {},
                   color: Colors.white,
                   child: Row(
@@ -128,7 +134,7 @@ class LoginView extends StatelessWidget {
                         child: Image.asset(AppAssets.google),
                       ),
                       Text(
-                        "Login With Google",
+                        "login_with_google".tr(),
                         style: theme.textTheme.bodyMedium!.copyWith(
                           color: ColorPallete.primaryColor,
                         ),
@@ -138,19 +144,52 @@ class LoginView extends StatelessWidget {
                 ),
               ),
 
-              Container(
-                width: 73.28,
-                height: 30.76,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xff5669FF)),
-                  borderRadius: BorderRadius.circular(70),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(AppAssets.en),
-                    Image.asset(AppAssets.ar, height: 50),
-                  ],
+              Directionality(
+                textDirection: ui.TextDirection.ltr,
+                child: Container(
+                  width: 74.w,height: 31.h,
+                  decoration:
+                  BoxDecoration(
+                      border: Border.all(color: ColorPallete.primaryColor,
+                          width: 3,style: BorderStyle.solid),
+                      borderRadius: BorderRadius.circular(25.r)
+                  ),
+                  child: Row(
+
+                    children: [
+                      Bounceable(
+                        onTap: (){
+                          context.setLocale(Locale('en'));
+
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: ColorPallete.primaryColor,
+                                    width: 3.r,style: context.locale.toString()=="en"?
+                                    BorderStyle.solid:BorderStyle.none),
+                                borderRadius: BorderRadius.circular(35.r)
+                            ),
+                            child: Image.asset(AppAssets.en)),
+                      ),
+                      Spacer(),
+                      Bounceable(
+                        onTap: (){
+                          context.setLocale(Locale('ar'));
+
+                        },
+                        child: Container(
+                            width: 30.w,
+                            decoration:  BoxDecoration(
+
+                                border: Border.all(color: ColorPallete.primaryColor,
+                                    width: 3.r,style: context.locale.toString()=="ar"?
+                                    BorderStyle.solid:BorderStyle.none),
+                                borderRadius: BorderRadius.circular(35.r)
+                            ),
+                            child: Image.asset(AppAssets.ar)),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

@@ -1,3 +1,6 @@
+import 'dart:ui' as ui;
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:flutter/material.dart';
@@ -27,48 +30,52 @@ class OnBoardingViewThree extends StatelessWidget {
                   ),
                   Image(image: AssetImage(AppAssets.onBoardingThree),
                     width: 357,height: 357,),
-                  Text("Connect with Friends & Share Moments",style: theme.textTheme.headlineSmall,),
-                  Text("Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories."
+                  Text("introduction_title3".tr(),style: theme.textTheme.headlineSmall,),
+                  Text("introduction_subtitle3".tr()
                     ,style: theme.textTheme.bodyLarge,softWrap: true,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Bounceable(onTap: (){
-                          controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
+                  Directionality(
+                    textDirection: ui.TextDirection.ltr,
 
-                        }, child: Container(
-                          width: 37.6,height: 37.6,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50)
-                              ,
-                              border: Border.all(color: Color(0xff5669FF),
-                              )
-                          ),
-                          child: Icon(Icons.arrow_back,color: Color(0xff5669FF),
-                          ),
-                        )),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Bounceable(onTap: (){
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Bounceable(onTap: (){
+                            controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
 
-                          controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
-Navigator.pushReplacementNamed(context, PageRoutesName.login);
-                        }, child: Container(
-                          width: 37.6,height: 37.6,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50)
-                              ,
-                              border: Border.all(color: Color(0xff5669FF),
-                              )
-                          ),
-                          child: Icon(Icons.arrow_forward_rounded,color: Color(0xff5669FF),
-                          ),
-                        )),
-                      )
-                    ],
+                          }, child: Container(
+                            width: 37.6,height: 37.6,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50)
+                                ,
+                                border: Border.all(color: Color(0xff5669FF),
+                                )
+                            ),
+                            child: Icon(Icons.arrow_back,color: Color(0xff5669FF),
+                            ),
+                          )),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Bounceable(onTap: (){
+
+                            controller.animateToPage(1, duration: Duration(milliseconds: 500), curve: Curves.ease);
+                    Navigator.pushReplacementNamed(context, PageRoutesName.login);
+                          }, child: Container(
+                            width: 37.6,height: 37.6,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50)
+                                ,
+                                border: Border.all(color: Color(0xff5669FF),
+                                )
+                            ),
+                            child: Icon(Icons.arrow_forward_rounded,color: Color(0xff5669FF),
+                            ),
+                          )),
+                        )
+                      ],
+                    ),
                   )
 
 
