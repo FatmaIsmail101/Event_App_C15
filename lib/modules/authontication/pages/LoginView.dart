@@ -6,8 +6,8 @@ import 'package:evently/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
-   LoginView({super.key});
-bool isVisible=false;
+  LoginView({super.key});
+  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -30,7 +30,6 @@ bool isVisible=false;
                   AssetImage(AppAssets.email),
                   color: ColorPallete.grey,
                 ),
-
               ),
 
               CustomTextFormField(
@@ -40,28 +39,35 @@ bool isVisible=false;
                   color: ColorPallete.grey,
                 ),
                 hintText: "Password",
-
               ),
               Align(
                 alignment: Alignment.topRight,
                 child: TextButton(
-
-
-                   onPressed: () {  }, child: Text("Forget password ?",style: theme.textTheme.bodyLarge!.copyWith(
-                decoration: TextDecoration.underline,
-                fontStyle: FontStyle.italic,
-                color: ColorPallete.primaryColor,
-                fontWeight: FontWeight.bold,),
+                  onPressed: () {},
+                  child: Text(
+                    "Forget password ?",
+                    style: theme.textTheme.bodyLarge!.copyWith(
+                      decoration: TextDecoration.underline,
+                      fontStyle: FontStyle.italic,
+                      color: ColorPallete.primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),),
+              ),
               SizedBox(
                 width: double.infinity,
-                child: CustomButtonStyle(child: Text("Login",
-                style: theme.textTheme.bodyMedium!.copyWith(
-                  color: Colors.white
-                ),),onTap: (){
-                  Navigator.pushReplacementNamed(context, PageRoutesName.introductionScreen);
-                },),
+                child: CustomButtonStyle(
+                  child: Text(
+                    "Login",
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onTap: () {
+
+                  },
+                ),
               ),
               Row(
                 children: [
@@ -112,19 +118,25 @@ bool isVisible=false;
               ),
               SizedBox(
                 width: double.infinity,
-                child: CustomButtonStyle(onTap: (){},color: Colors.white,child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Image.asset(AppAssets.google),
-                    ),
-                    Text("Login With Google",
-                      style: theme.textTheme.bodyMedium!.copyWith(
-                          color: ColorPallete.primaryColor
-                      ),),
-                  ],
-                ),),
+                child: CustomButtonStyle(
+                  onTap: () {},
+                  color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Image.asset(AppAssets.google),
+                      ),
+                      Text(
+                        "Login With Google",
+                        style: theme.textTheme.bodyMedium!.copyWith(
+                          color: ColorPallete.primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
 
               Container(
@@ -137,8 +149,8 @@ bool isVisible=false;
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                   Image.asset(AppAssets.en),
-                    Image.asset(AppAssets.ar,height: 50,),
+                    Image.asset(AppAssets.en),
+                    Image.asset(AppAssets.ar, height: 50),
                   ],
                 ),
               ),
