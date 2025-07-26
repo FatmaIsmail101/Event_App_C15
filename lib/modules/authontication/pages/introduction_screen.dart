@@ -5,16 +5,15 @@ import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/core/widgets/custom_button_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' ;
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:ui' as ui;
 import 'package:provider/provider.dart';
-import 'package:evently/core/providers/theme_provider.dart';
 
 
 class IntroductionScreen extends StatelessWidget {
-  const IntroductionScreen({super.key});
+   IntroductionScreen({super.key});
+  ThemeMode currentTheme=ThemeMode.light;
   @override
   Widget build(BuildContext context) {
     var provider=Provider.of<ThemeProvider>(context);
@@ -23,8 +22,8 @@ class IntroductionScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(AppAssets.appLogoBoarding,
-        width: 159,height: 50,),
-        centerTitle: true,toolbarHeight: 85,
+        width: 159.w,height: 50.h,),
+        centerTitle: true,toolbarHeight: 85.h,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -38,9 +37,9 @@ class IntroductionScreen extends StatelessWidget {
                 color: ColorPallete.primaryColor,fontWeight: FontWeight.bold
               ) ,),
               Text("introduction_subtitle".tr(),style: theme.textTheme.bodyMedium),
-        
+
               Row(
-        
+
                 children: [
                   Text("language".tr(),style:theme.textTheme.bodyLarge!.copyWith(color:
                   ColorPallete.primaryColor,fontWeight: FontWeight.bold) ,),
@@ -96,7 +95,7 @@ class IntroductionScreen extends StatelessWidget {
                 ],
               ),
               Row(
-        
+
                 children: [
                   Text("theme".tr(),style:theme.textTheme.bodyLarge!.copyWith(color:
                   ColorPallete.primaryColor,fontWeight: FontWeight.bold) ,),
@@ -110,7 +109,7 @@ class IntroductionScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(25.r)
                     ),
                     child: Row(
-        
+
                       children: [
                         Bounceable(
                           onTap: () {
@@ -120,7 +119,7 @@ class IntroductionScreen extends StatelessWidget {
                           child: Container(
                               decoration: BoxDecoration(color: ColorPallete.primaryColor,
                                   border: Border.all(color: ColorPallete.primaryColor,
-                                      width: 3.r,style: BorderStyle.solid),
+                                      width: 3.r,style:provider.changeTheme==ThemeMode.light? BorderStyle.solid:BorderStyle.none),
                                   borderRadius: BorderRadius.circular(35)
                               ),
                               child: Image.asset(AppAssets.sun)),
@@ -133,13 +132,13 @@ class IntroductionScreen extends StatelessWidget {
                           },
                           child: Container(
                               decoration:  BoxDecoration(
-                                  border: Border.all(color: ColorPallete.primaryColor,
-                                      width: 3),
-                                  borderRadius: BorderRadius.circular(35)
+                                  border: Border.all(
+                                      width: 3,style:provider.changeTheme==ThemeMode.dark? BorderStyle.solid:BorderStyle.none),
+                                  borderRadius: BorderRadius.circular(35.r)
                               ),
                               child: Image.asset(AppAssets.moon)),
                         ),
-                        
+
                       ],
                     ),
                   )
