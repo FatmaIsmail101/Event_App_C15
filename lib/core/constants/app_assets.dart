@@ -1,17 +1,28 @@
-abstract class AppAssets{
-  static const String appLogo='assets/icons/Logo.png';
-  static const String copyRightsLogo='assets/icons/copy rights.png';
-  static const String en="assets/icons/en.png";
-  static const String ar="assets/icons/ar.png";
-  static const String sun="assets/icons/Sun.png";
-  static const String moon="assets/icons/Moon.png";
-  static const String appLogoBoarding="assets/icons/onboarding Icon.png";
-  static const String onBoardingThree="assets/icons/social-media.png";
-  static const String onBoardingOne="assets/icons/hot-trending.png";
-  static const String onBoardingTwo="assets/icons/being-creative.png";
-  static const String google="assets/icons/google.png";
-  static const String email="assets/icons/email.png";
-  static const String password="assets/icons/password.png";
-
-  static const String intro1="assets/icons/intro1.png";
+abstract class AppAssets {
+  static const String appLogo = 'assets/icons/Logo.png';
+  static const String copyRightsLogo = 'assets/icons/copy rights.png';
+  static const String en = "assets/icons/en.png";
+  static const String ar = "assets/icons/ar.png";
+  static const String sun = "assets/icons/Sun.png";
+  static const String moon = "assets/icons/Moon.png";
+  static const String appLogoBoarding = "assets/icons/onboarding Icon.png";
+  static const String onBoardingThree = "assets/icons/social-media.png";
+  static const String onBoardingOne = "assets/icons/hot-trending.png";
+  static const String onBoardingTwo = "assets/icons/being-creative.png";
+  static const String google = "assets/icons/google.png";
+  static const String email = "assets/icons/email.png";
+  static const String password = "assets/icons/password.png";
+  static const String home = "assets/icons/Home.png";
+  static const String home_selected = "assets/icons/home_selected.png";
+  static const String map = "assets/icons/Map.png";
+  static const String map_selected = "assets/icons/map_selected.png";
+  static const String fav = "assets/icons/favorite.png";
+  static const String fav_selected = "assets/icons/favorite_selected.png";
+  static const String profile = "assets/icons/profile.png";
+  static const String profile_selected = "assets/icons/profile_selected.png";
+  static const String intro1 = "assets/icons/intro1.png";
+  static const String all="assets/icons/all.png";
+  static const String sport="assets/icons/sports.png";
+  static const String birthday="assets/icons/birthday.png";
+static const String birthdaycard="assets/images/birthday card.png";
 }

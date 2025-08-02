@@ -16,6 +16,8 @@ abstract class AppThemeManager{
             ,fontSize: 16.sp,color: ColorPallete.black),
         headlineSmall: GoogleFonts.inter(fontWeight: FontWeight.w500
             ,fontSize: 20.sp,color: ColorPallete.white),
+        titleLarge: GoogleFonts.inter(fontWeight: FontWeight.bold
+            ,fontSize: 24.sp,color: ColorPallete.white),
       ),
       hintColor: ColorPallete.grey,
       highlightColor: ColorPallete.textColorInDark,
@@ -23,12 +25,56 @@ abstract class AppThemeManager{
       appBarTheme: AppBarTheme(
         backgroundColor: ColorPallete.screenLight,
 
-      )
+      ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+        backgroundColor: ColorPallete.primaryColor,
+        selectedIconTheme: IconThemeData(
+          color: ColorPallete.white,
+       ),
+        selectedItemColor: ColorPallete.white,
+        selectedLabelStyle: TextStyle(
+            color: ColorPallete.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 12
+        ),
+        unselectedIconTheme: IconThemeData(
+            color: ColorPallete.textColorInDark
+        ),
+        unselectedLabelStyle: TextStyle(
+            color: ColorPallete.white,
+            fontSize: 12,
+            fontWeight: FontWeight.bold
+        ),
+        unselectedItemColor: ColorPallete.white
+    ),
+
 
 
   );
 
   static ThemeData darkTheme=ThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: ColorPallete.screenDark,
+      selectedIconTheme: IconThemeData(
+        color: ColorPallete.white,
+      ),
+      selectedItemColor: ColorPallete.white,
+      selectedLabelStyle: TextStyle(
+        color: ColorPallete.white,
+        fontWeight: FontWeight.bold,
+        fontSize: 12
+      ),
+      unselectedIconTheme: IconThemeData(
+        color: ColorPallete.textColorInDark
+      ),
+      unselectedLabelStyle: TextStyle(
+        color: ColorPallete.white,
+        fontSize: 12,
+        fontWeight: FontWeight.bold
+      ),
+      unselectedItemColor: ColorPallete.white
+    ),
       iconTheme: IconThemeData(
           color:ColorPallete.textColorInDark
       ),

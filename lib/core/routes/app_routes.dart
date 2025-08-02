@@ -1,5 +1,10 @@
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/modules/authontication/pages/LoginView.dart';
+import 'package:evently/modules/layouts/favorite/favorite_view.dart';
+import 'package:evently/modules/layouts/home/home_view.dart';
+import 'package:evently/modules/layouts/layout_view.dart';
+import 'package:evently/modules/layouts/map/map_view.dart';
+import 'package:evently/modules/layouts/profile/profile_view.dart';
 import 'package:evently/modules/splash/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +26,24 @@ abstract class AppRoutes{
       case PageRoutesName.onBoardingScreen:
         return MaterialPageRoute(builder: (_)=>OnBoardingScreen(),
             settings:settings);
+      case PageRoutesName.layout:
+        return MaterialPageRoute(builder: (_)=>LayoutView(),
+            settings:settings);
+
+      case PageRoutesName.home:
+        return MaterialPageRoute(builder: (_)=>HomeView(),
+            settings:settings);
+      case PageRoutesName.map:
+        return MaterialPageRoute(builder: (_)=>MapView(),
+            settings:settings);
+      case PageRoutesName.favorite:
+        return MaterialPageRoute(builder: (_)=>FavoriteView(),
+            settings:settings);
+
+      case PageRoutesName.profile:
+        return MaterialPageRoute(builder: (_)=>ProfileView(),
+            settings:settings);
+
 
       default:
         return MaterialPageRoute(builder: (_)=>SplashView());

@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
+import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/core/widgets/custom_button_style.dart';
 import 'package:evently/core/widgets/custom_text_form_field.dart';
@@ -69,6 +70,7 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
+                    Navigator.pushNamed(context, PageRoutesName.layout);
 
                   },
                 ),

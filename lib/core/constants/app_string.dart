@@ -4,5 +4,21 @@ abstract class AppStrings{
   static const String language="Language";
   static const String theme="Theme";
   static const String introBTN="Let’s Start";
+  static const String welcome="Welcome Back ✨";
+  static const String name="Fatma Ismail";
+  static const String location="Cairo, Egypt";
+  static const String en="En";
+  static const String all="All";
+  static const String sports="Sports";
+  static const String birthday="Birthday";
+  static const String meeting="Meeting";
+  static const String gaming="Gaming";
+  static const String eating="Eating";
+  static const String holiday="Holiday";
+  static const String exhibition="Exhibition";
+  static const String workshop="Work Shop";
+  static const String bookclub="Book Club";
+
+
 
 }
