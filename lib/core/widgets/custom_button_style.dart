@@ -16,15 +16,24 @@ class CustomButtonStyle extends StatelessWidget {
 final String?heroTag;
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      heroTag: heroTag,
+    return ElevatedButton(
+
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(vertical: 14),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: ColorPallete.primaryColor),
         ),
-        onPressed: onTap,
         backgroundColor: color ?? ColorPallete.primaryColor,
+
+      ),
+
+        onPressed: onTap,
         child: child,
         );
     }
 }
+/*
+ heroTag: heroTag,
+
+ */

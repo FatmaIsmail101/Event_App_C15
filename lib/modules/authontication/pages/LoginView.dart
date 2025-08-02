@@ -125,13 +125,13 @@ class LoginView extends StatelessWidget {
                 child: CustomButtonStyle(
                   heroTag: "login",
                   onTap: () {},
-                  color: Colors.white,
+                 color: ColorPallete.screenLight,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: Image.asset(AppAssets.google),
+                        child: Image.asset(AppAssets.google,width: 26,height: 26,),
                       ),
                       Text(
                         "login_with_google".tr(),
