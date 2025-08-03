@@ -7,7 +7,7 @@ import 'package:evently/modules/layouts/home/widgets/tab_bar_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({super.key});
+  const HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -15,18 +15,19 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int selectedIndex=0;
-List<CategoryData>categoriesDataList=[
-  CategoryData(name: "all", imgPath: AppAssets.all),
-  CategoryData(name: "sports", imgPath: AppAssets.sport),
-  CategoryData(name: "birthday", imgPath: AppAssets.birthday),
-  CategoryData(name: "all", imgPath: AppAssets.all),
-  CategoryData(name: "sports", imgPath: AppAssets.sport),
-  CategoryData(name: "birthday", imgPath: AppAssets.birthday),
-  CategoryData(name: "all", imgPath: AppAssets.all),
-  CategoryData(name: "sports", imgPath: AppAssets.sport),
-  CategoryData(name: "birthday", imgPath: AppAssets.birthday),
+  List<CategoryData>categoriesDataList=[
+    CategoryData(imgPath: "",name: "sports", iconData: Icons.sports_basketball),
+    CategoryData(imgPath: "",name: "birthday", iconData: Icons.party_mode),
+    CategoryData(imgPath: "",name: "Book Club", iconData: Icons.local_library),
+    CategoryData(imgPath: "",name: "Holiday", iconData: Icons.holiday_village),
+    CategoryData(imgPath: "",name: "Exhibition", iconData: Icons.menu_book),
+    CategoryData(imgPath: "",name: "meeting", iconData: Icons.meeting_room_outlined),
+    CategoryData(imgPath: "",name: "Eating", iconData: Icons.food_bank),
+    CategoryData(imgPath: "",name: "WorkShop", iconData: Icons.workspaces),
+    CategoryData(imgPath: "",name: "Gaming", iconData: Icons.games),
 
-];
+
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ List<CategoryData>categoriesDataList=[
             padding: EdgeInsets.only(
               top: mediaQuery.size.height * .04,
               bottom: 20,
-
+left: 10
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),
@@ -112,7 +113,7 @@ List<CategoryData>categoriesDataList=[
                     isScrollable : true,
                     indicator: BoxDecoration(),
                     dividerColor: Colors.transparent,
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    //padding: EdgeInsets.symmetric(horizontal: 16),
       labelPadding: EdgeInsets.symmetric(horizontal: 5),
                     tabAlignment: TabAlignment.start,
                     tabs:

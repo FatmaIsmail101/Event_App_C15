@@ -23,6 +23,10 @@ abstract class AppThemeManager{
       highlightColor: ColorPallete.textColorInDark,
 
       appBarTheme: AppBarTheme(
+        iconTheme: IconThemeData(
+            color: ColorPallete.primaryColor
+        ),
+
         backgroundColor: ColorPallete.screenLight,
 
       ),
@@ -48,7 +52,6 @@ abstract class AppThemeManager{
         ),
         unselectedItemColor: ColorPallete.white
     ),
-
 
 
   );

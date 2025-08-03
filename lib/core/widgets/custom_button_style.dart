@@ -18,13 +18,17 @@ final String?heroTag;
   Widget build(BuildContext context) {
     return ElevatedButton(
 
+
       style: ElevatedButton.styleFrom(
+        backgroundColor: color ?? ColorPallete.primaryColor,
+        overlayColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        elevation: 0,
         padding: EdgeInsets.symmetric(vertical: 14),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: ColorPallete.primaryColor),
         ),
-        backgroundColor: color ?? ColorPallete.primaryColor,
 
       ),
 

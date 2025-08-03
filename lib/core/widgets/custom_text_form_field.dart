@@ -5,20 +5,23 @@ import '../theme/color_pallete.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final bool isPassword;
-  final Widget prefixIcon;
-  final String hintText;
+  final Widget? prefixIcon;
+  final String? hintText;
   final void Function(String)? onChanged;
   final TextEditingController? textEditingController;
   final void Function(String)? onFieldSubmitted;
-
+final int? maxLines;
+final int? miniLines;
   const CustomTextFormField({
     super.key,
-    required this.prefixIcon,
-    required this.hintText,
+     this.prefixIcon,
+     this.hintText,
     this.textEditingController,
     this.onChanged,
     this.onFieldSubmitted,
     this.isPassword = false,
+    this.miniLines,
+    this.maxLines=1
   });
 
   @override
@@ -33,6 +36,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     final theme = Theme.of(context);
 
     return TextFormField(
+      maxLines:widget.maxLines ,
+      minLines:widget.miniLines ,
       obscureText:widget.isPassword? obscureText:false,
       onFieldSubmitted: widget.onFieldSubmitted,
       onChanged: widget.onChanged,
@@ -51,9 +56,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           borderSide: BorderSide(color: ColorPallete.grey, width: 2),
         ),
         hintText: widget.hintText,
+        hintStyle: theme.textTheme.bodyLarge!.copyWith(
+          color: ColorPallete.grey
+        ),
         helperStyle: theme.textTheme.bodyLarge!.copyWith(
           color: ColorPallete.grey,
         ),
+
         prefixIcon: Padding(
           padding: const EdgeInsets.all(8.0),
           child: widget.prefixIcon,

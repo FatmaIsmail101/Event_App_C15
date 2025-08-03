@@ -18,6 +18,15 @@ abstract class AppStrings{
   static const String exhibition="Exhibition";
   static const String workshop="Work Shop";
   static const String bookclub="Book Club";
+  static const String createEvent="Create Event";
+  static const String title="Title";
+  static const String description="Description";
+  static const String eventDate="Event Date";
+  static const String eventTime="Event Time";
+  static const String locationCreateEvent="Location";
+
+
+
 
 
 

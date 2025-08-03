@@ -1,5 +1,6 @@
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/modules/authontication/pages/LoginView.dart';
+import 'package:evently/modules/event_creation/event_creation_view.dart';
 import 'package:evently/modules/layouts/favorite/favorite_view.dart';
 import 'package:evently/modules/layouts/home/home_view.dart';
 import 'package:evently/modules/layouts/layout_view.dart';
@@ -42,6 +43,9 @@ abstract class AppRoutes{
 
       case PageRoutesName.profile:
         return MaterialPageRoute(builder: (_)=>ProfileView(),
+            settings:settings);
+      case PageRoutesName.eventCreationView:
+        return MaterialPageRoute(builder: (_)=>EventCreationView(),
             settings:settings);
 
 

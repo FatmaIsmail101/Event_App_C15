@@ -25,4 +25,14 @@ abstract class AppAssets {
   static const String sport="assets/icons/sports.png";
   static const String birthday="assets/icons/birthday.png";
 static const String birthdaycard="assets/images/birthday card.png";
+  static const String birthdayimg="assets/images/birthday.png";
+  static const String sportimg="assets/images/sport.png";
+  static const String gamingimg="assets/images/gaming.png";
+  static const String bookclubimg="assets/images/Book Club.png";
+  static const String exhibitionimg="assets/images/exhibition.png";
+  static const String eatingimg="assets/images/eating.png";
+  static const String meetingimg="assets/images/meeting.png";
+  static const String workshopimg="assets/images/workshop.png";
+  static const String holidayimg="assets/images/holiday.png";
+
 }

@@ -9,6 +9,8 @@ abstract class PageRoutesName{
   static const String favorite="/favorite";
   static const String add="/add";
   static const String profile="/profile";
+  static const String eventCreationView="/EventCreationView";
+
 
 
 }

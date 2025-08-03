@@ -22,8 +22,8 @@ final CategoryData categoryData;
       child: Row(
         spacing: 6,
         children: [
-          Image(image: AssetImage(categoryData.imgPath))
-        ,Text(categoryData.name,style: theme.textTheme.bodyLarge!.copyWith(
+          Icon(categoryData.iconData,color:isSelected?ColorPallete.primaryColor: ColorPallete.white
+          )        ,Text(categoryData.name,style: theme.textTheme.bodyLarge!.copyWith(
             color:isSelected?ColorPallete.primaryColor: ColorPallete.white,fontWeight: FontWeight.w500
           ),)
         ],

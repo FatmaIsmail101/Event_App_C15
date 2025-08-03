@@ -1,4 +1,5 @@
 import 'package:evently/core/constants/app_assets.dart';
+import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/modules/layouts/favorite/favorite_view.dart';
 import 'package:evently/modules/layouts/home/home_view.dart';
@@ -28,7 +29,9 @@ class _LayoutViewState extends State<LayoutView> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Bounceable(
-        onTap: (){},
+        onTap: (){
+          Navigator.pushNamed(context, PageRoutesName.eventCreationView);
+        },
         child: CircleAvatar(
           backgroundColor: ColorPallete.white,
           radius: 32,
