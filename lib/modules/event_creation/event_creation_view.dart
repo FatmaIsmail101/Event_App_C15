@@ -139,35 +139,38 @@ final GlobalKey <FormState> formKey=GlobalKey <FormState>();
                     ],
                   ),
                 ),),
-                
+                SizedBox(height: 150,)
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton:    SizedBox(
-        width: double.infinity,
-        child: CustomButtonStyle(
-          onTap: (){
-            if(formKey.currentState!.validate()){
-              if(selectedDate!=null){
-                var eventData=EventData(eventTitle:
-                _titleEditingController.text,
-                    eventDescription: _descriptionEditingController.text,
-                    eventCategoryImg: categoriesDataList[selectedIndex].imgPath,
-                    eventCategoryId: categoriesDataList[selectedIndex].id,
-                    selectedDate: selectedDate!);
+      floatingActionButton:    Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: SizedBox(
+          width: double.infinity,
+          child: CustomButtonStyle(
+            onTap: (){
+              if(formKey.currentState!.validate()){
+                if(selectedDate!=null){
+                  var eventData=EventData(eventTitle:
+                  _titleEditingController.text,
+                      eventDescription: _descriptionEditingController.text,
+                      eventCategoryImg: categoriesDataList[selectedIndex].imgPath,
+                      eventCategoryId: categoriesDataList[selectedIndex].id,
+                      selectedDate: selectedDate!);
+
+                }
 
               }
-
-            }
-          },
-          color: ColorPallete.primaryColor,child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Text("Add Event",style: theme.textTheme.titleSmall!.copyWith(
-              color: ColorPallete.white
+            },
+            color: ColorPallete.primaryColor,child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text("Add Event",style: theme.textTheme.titleSmall!.copyWith(
+                color: ColorPallete.white
+            ),),
           ),),
-        ),),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 
