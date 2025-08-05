@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193079455019",
+    "project_id": "evently-fatma-2025",
+    "storage_bucket": "evently-fatma-2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193079455019:android:4c0913d36a0d312abaa96e",
+        "android_client_info": {
+          "package_name": "com.example.evently"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGykI5xR7mPA6aYtKBbfjBjfAlY5SqD0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

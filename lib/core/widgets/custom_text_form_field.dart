@@ -12,6 +12,7 @@ class CustomTextFormField extends StatefulWidget {
   final void Function(String)? onFieldSubmitted;
 final int? maxLines;
 final int? miniLines;
+final String? Function(String?)?validator;
   const CustomTextFormField({
     super.key,
      this.prefixIcon,
@@ -21,7 +22,8 @@ final int? miniLines;
     this.onFieldSubmitted,
     this.isPassword = false,
     this.miniLines,
-    this.maxLines=1
+    this.maxLines=1,
+    this.validator
   });
 
   @override
@@ -36,6 +38,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     final theme = Theme.of(context);
 
     return TextFormField(
+      validator:widget.validator ,
       maxLines:widget.maxLines ,
       minLines:widget.miniLines ,
       obscureText:widget.isPassword? obscureText:false,

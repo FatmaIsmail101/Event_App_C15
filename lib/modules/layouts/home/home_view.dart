@@ -16,15 +16,15 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int selectedIndex=0;
   List<CategoryData>categoriesDataList=[
-    CategoryData(imgPath: "",name: "sports", iconData: Icons.sports_basketball),
-    CategoryData(imgPath: "",name: "birthday", iconData: Icons.party_mode),
-    CategoryData(imgPath: "",name: "Book Club", iconData: Icons.local_library),
-    CategoryData(imgPath: "",name: "Holiday", iconData: Icons.holiday_village),
-    CategoryData(imgPath: "",name: "Exhibition", iconData: Icons.menu_book),
-    CategoryData(imgPath: "",name: "meeting", iconData: Icons.meeting_room_outlined),
-    CategoryData(imgPath: "",name: "Eating", iconData: Icons.food_bank),
-    CategoryData(imgPath: "",name: "WorkShop", iconData: Icons.workspaces),
-    CategoryData(imgPath: "",name: "Gaming", iconData: Icons.games),
+    CategoryData(id: "sports",imgPath: "",name: "sports", iconData: Icons.sports_basketball),
+    CategoryData(id:"birthday" ,imgPath: "",name: "birthday", iconData: Icons.party_mode),
+    CategoryData(id: "Book Club",imgPath: "",name: "Book Club", iconData: Icons.local_library),
+    CategoryData(id:"Holiday" ,imgPath: "",name: "Holiday", iconData: Icons.holiday_village),
+    CategoryData(id:"Exhibition" ,imgPath: "",name: "Exhibition", iconData: Icons.menu_book),
+    CategoryData(id:"meeting" ,imgPath: "",name: "meeting", iconData: Icons.meeting_room_outlined),
+    CategoryData(id: "Eating",imgPath: "",name: "Eating", iconData: Icons.food_bank),
+    CategoryData(id:"WorkShop" ,imgPath: "",name: "WorkShop", iconData: Icons.workspaces),
+    CategoryData(id:"Gaming" ,imgPath: "",name: "Gaming", iconData: Icons.games),
 
 
   ];

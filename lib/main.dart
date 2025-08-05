@@ -3,13 +3,18 @@ import 'package:evently/core/providers/theme_provider.dart';
 import 'package:evently/core/routes/app_routes.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/app_theme_manager.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
+import 'firebase_options.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
+ await Firebase.initializeApp(
+  options:DefaultFirebaseOptions.currentPlatform
+);
   runApp(EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations', // <-- change the path of the translation files
