@@ -11,7 +11,8 @@ final CategoryData categoryData;
   Widget build(BuildContext context) {
     final theme=Theme.of(context);
     return Container(
-      width: 107,height: 40,
+      constraints: BoxConstraints(minWidth: 107),
+      width: null,height: 40,
       decoration:  BoxDecoration( color: isSelected?ColorPallete.white:Colors.transparent,
         borderRadius: BorderRadius.circular(46),
         border: Border.all(
@@ -20,6 +21,7 @@ final CategoryData categoryData;
       ),
       padding: EdgeInsets.symmetric(horizontal: 5,vertical: 6),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         spacing: 6,
         children: [
           Icon(categoryData.iconData,color:isSelected?ColorPallete.primaryColor: ColorPallete.white

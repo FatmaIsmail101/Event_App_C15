@@ -11,7 +11,7 @@ class CreateEventTabBarItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme=Theme.of(context);
     return Container(
-      width: 107,height: 40,
+      width: 129,height: 40,
       decoration:  BoxDecoration( color: isSelected?ColorPallete.primaryColor:Colors.transparent,
           borderRadius: BorderRadius.circular(46),
           border: Border.all(
@@ -24,9 +24,11 @@ class CreateEventTabBarItemWidget extends StatelessWidget {
         children: [
           Icon(categoryData.iconData,color:isSelected?ColorPallete.white: ColorPallete.primaryColor
           )
-          ,Text(categoryData.name,style: theme.textTheme.bodyLarge!.copyWith(
-              color:isSelected?ColorPallete.white: ColorPallete.primaryColor,fontWeight: FontWeight.w500
-          ),)
+          ,Flexible(
+            child: Text(categoryData.name,style: theme.textTheme.bodyLarge!.copyWith(
+                color:isSelected?ColorPallete.white: ColorPallete.primaryColor,fontWeight: FontWeight.w500
+            ),),
+          )
         ],
       ),
     );
