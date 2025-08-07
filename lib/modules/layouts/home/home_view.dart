@@ -1,7 +1,9 @@
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/constants/app_string.dart';
 import 'package:evently/core/theme/color_pallete.dart';
+import 'package:evently/core/utils/firebase_firestore_uitles.dart';
 import 'package:evently/model/categorie_data.dart';
+import 'package:evently/model/event_data.dart';
 import 'package:evently/modules/layouts/home/widgets/event_card_item.dart';
 import 'package:evently/modules/layouts/home/widgets/tab_bar_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
             padding: EdgeInsets.only(
               top: mediaQuery.size.height * .04,
               bottom: 20,
-left: 10
+      left: 10
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),
@@ -126,23 +128,75 @@ left: 10
               ],
             ),
           ),
-          Expanded(
-            child: SizedBox(
-              height: 203,width: 360,
-              child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                  itemBuilder: (context, index) {
-                    return EventCardItem();
-                  },
-                  separatorBuilder: (context, index) {
-                return SizedBox(
-                  height: 10,
-                );
-              }, itemCount: 10),
-            ),
+          StreamBuilder(stream: FirebaseFirestoreUtils.getStreamEventTasksList(
+            categorieId: categoriesDataList[selectedIndex].id
           )
+              ,  builder: (context, snapshot) {
+          if(snapshot.hasError){
+          return Center(
+          child: Text(snapshot.error.toString(),style: theme.textTheme.bodyMedium
+          !.copyWith(color: Colors.black),),
+          );
+          }
+          if(snapshot.connectionState==ConnectionState.waiting){
+          return Center(child: CircularProgressIndicator(),);
+          }
+          List <EventData>eventDataList=snapshot.data!.docs.map((data) {
+      return data.data();
+          },).toList();
+          return eventDataList.isEmpty?Center(
+            child: Text("No Events", style: theme.textTheme.bodyMedium
+              !.copyWith(color: ColorPallete.primaryColor),),
+          ): Expanded(
+          child: SizedBox(
+          height: 203,width: 360,
+          child: ListView.separated(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          itemBuilder: (context, index) {
+          return EventCardItem(eventData: eventDataList[index],);
+          },
+          separatorBuilder: (context, index) {
+          return SizedBox(
+          height: 10,
+          );
+          }, itemCount: eventDataList.length),
+          ),
+          );
+          }),
+
         ],
       ),
     );
   }
 }
+/*
+FutureBuilder <List<EventData>>(future: FirebaseFirestoreUtils.getEventTasksList(),
+              builder: (context, snapshot) {
+            if(snapshot.hasError){
+              return Center(
+                child: Text(snapshot.error.toString(),style: theme.textTheme.bodyMedium
+                  !.copyWith(color: Colors.black),),
+              );
+            }
+            if(snapshot.connectionState==ConnectionState.waiting){
+              return Center(child: CircularProgressIndicator(),);
+            }
+            List <EventData>eventDataList=snapshot.data??[];
+            return  Expanded(
+              child: SizedBox(
+                height: 203,width: 360,
+                child: ListView.separated(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    itemBuilder: (context, index) {
+                      return EventCardItem(eventData: eventDataList[index],);
+                    },
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        height: 10,
+                      );
+                    }, itemCount: eventDataList.length),
+              ),
+            );
+              },),
+
+ */

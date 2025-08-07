@@ -1,10 +1,13 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/providers/theme_provider.dart';
 import 'package:evently/core/routes/app_routes.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/app_theme_manager.dart';
+import 'package:evently/core/utils/services/loading_services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +25,7 @@ void main() async{
       child: ChangeNotifierProvider(
           create:(context)=> ThemeProvider(),
           child:  MyApp())));
+  configLoading();
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +40,9 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return MaterialApp(
-
+          builder: EasyLoading.init(
+            builder: BotToastInit()
+          ),
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,

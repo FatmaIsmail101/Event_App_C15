@@ -2,13 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/constants/app_string.dart';
 import 'package:evently/core/theme/color_pallete.dart';
+import 'package:evently/core/utils/firebase_firestore_uitles.dart';
 import 'package:evently/core/widgets/custom_button_style.dart';
 import 'package:evently/core/widgets/custom_text_form_field.dart';
 import 'package:evently/model/event_data.dart';
 import 'package:evently/modules/event_creation/widgets/create_event_tab_bar_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import '../../core/utils/services/snack_bar_services.dart';
 import '../../model/categorie_data.dart';
 
 class EventCreationView extends StatefulWidget {
@@ -159,10 +162,23 @@ final GlobalKey <FormState> formKey=GlobalKey <FormState>();
                       eventCategoryImg: categoriesDataList[selectedIndex].imgPath,
                       eventCategoryId: categoriesDataList[selectedIndex].id,
                       selectedDate: selectedDate!);
+                  EasyLoading.show();
+                  FirebaseFirestoreUtils.createNewEventTask(eventData).then((value) {
+                    EasyLoading.dismiss();
+                    if (value){
+                      Navigator.pop(context);
+                      SnackBarServices.showSucessMessage("Event is created sucessfully");
+                    }
+                    else{
+                      SnackBarServices.showWarningMessage( msg: "Something went wrong",);
 
+                    }
+                  }
+                    ,);
                 }
 
               }
+
             },
             color: ColorPallete.primaryColor,child: Padding(
             padding: const EdgeInsets.all(16),
