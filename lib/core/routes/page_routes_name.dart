@@ -11,4 +11,6 @@ abstract class PageRoutesName{
   static const String profile="/profile";
   static const String eventCreationView="/EventCreationView";
   static const String createAccount="/createAccount";
+  static const String restPass="/restPass";
+
 }

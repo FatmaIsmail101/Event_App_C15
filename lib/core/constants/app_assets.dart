@@ -34,5 +34,6 @@ static const String birthdaycard="assets/images/birthday card.png";
   static const String meetingimg="assets/images/meeting.png";
   static const String workshopimg="assets/images/workshop.png";
   static const String holidayimg="assets/images/holiday.png";
+  static const String restPass="assets/images/change-setting.png";
 
 }

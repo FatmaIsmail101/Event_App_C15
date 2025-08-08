@@ -57,7 +57,9 @@ class LoginView extends StatelessWidget {
                     validator: (value){
                       if(value==null||value.isEmpty){
                         return "Please Enter Password";
-                        ///pass: 1234@#Fatma
+                        //todo:pass: 1234@#Fatma
+                        //todo:email: fatma@gmail.com
+
                       }
                       return null;
                     },
@@ -73,7 +75,9 @@ class LoginView extends StatelessWidget {
                   Align(
                     alignment: Alignment.topRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         Navigator.pushNamed(context, PageRoutesName.restPass);
+                      },
                       child: Text(
                         "forget_password".tr(),
                         style: theme.textTheme.bodyLarge!.copyWith(
