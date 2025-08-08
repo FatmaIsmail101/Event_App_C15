@@ -10,7 +10,5 @@ abstract class PageRoutesName{
   static const String add="/add";
   static const String profile="/profile";
   static const String eventCreationView="/EventCreationView";
-
-
-
+  static const String createAccount="/createAccount";
 }
