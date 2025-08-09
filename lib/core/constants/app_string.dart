@@ -24,6 +24,16 @@ abstract class AppStrings{
   static const String eventDate="Event Date";
   static const String eventTime="Event Time";
   static const String locationCreateEvent="Location";
+  static const String onBoardingOneTitle="Personalize Your Experience";
+  static const String onBoardingOneDescription="Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.";
+
+  static const String onBoardingTwoTitle="Find Events That Inspire You";
+  static const String onBoardingTwoDescription="Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.";
+  static const String onBoardingThreeTitle="Effortless Event Planning";
+  static const String onBoardingThreeDescription="Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.";
+  static const String onBoardingFourTitle="Connect with Friends & Share Moments";
+  static const String onBoardingFourDescription="Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.";
+
 
 
 

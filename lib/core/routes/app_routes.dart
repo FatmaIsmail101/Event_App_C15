@@ -10,9 +10,7 @@ import 'package:evently/modules/layouts/map/map_view.dart';
 import 'package:evently/modules/layouts/profile/profile_view.dart';
 import 'package:evently/modules/splash/splash_view.dart';
 import 'package:flutter/material.dart';
-
-import '../../modules/authontication/pages/introduction_screen.dart';
-import '../../modules/onboarding_view/onboardingscreen.dart';
+import '../../modules/onboarding_view/on_boarding_view.dart';
 
 abstract class AppRoutes{
   static Route<dynamic> onGenerateRoute(RouteSettings settings){
@@ -20,14 +18,12 @@ abstract class AppRoutes{
       case PageRoutesName.initial:
         return MaterialPageRoute(builder: (_)=>SplashView(),
             settings:settings);
-      case PageRoutesName.intro:
-        return MaterialPageRoute(builder: (_)=>IntroductionScreen(),
-            settings:settings);
+
       case PageRoutesName.login:
         return MaterialPageRoute(builder: (_)=>LoginView(),
             settings:settings);
       case PageRoutesName.onBoardingScreen:
-        return MaterialPageRoute(builder: (_)=>OnBoardingScreen(),
+        return MaterialPageRoute(builder: (_)=>OnBoardingView(),
             settings:settings);
       case PageRoutesName.layout:
         return MaterialPageRoute(builder: (_)=>LayoutView(),
@@ -62,3 +58,9 @@ abstract class AppRoutes{
 
   }
 }
+
+/*
+ case PageRoutesName.intro:
+        return MaterialPageRoute(builder: (_)=>IntroductionScreen(),
+            settings:settings);
+ */

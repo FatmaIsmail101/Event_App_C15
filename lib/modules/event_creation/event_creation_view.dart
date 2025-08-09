@@ -24,6 +24,7 @@ class EventCreationView extends StatefulWidget {
 class _EventCreationViewState extends State<EventCreationView> {
 int selectedIndex=0;
 DateTime? selectedDate;
+TimeOfDay? timeOfDay;
 final TextEditingController _titleEditingController=TextEditingController();
 final TextEditingController _descriptionEditingController=TextEditingController();
 final GlobalKey <FormState> formKey=GlobalKey <FormState>();
@@ -115,7 +116,15 @@ final GlobalKey <FormState> formKey=GlobalKey <FormState>();
                     SizedBox(width: 5,),
                     Text(AppStrings.eventTime),
                     Spacer(),
-                    Bounceable(onTap: (){}, child: Text("Choose Time",style: theme.textTheme.bodyLarge!.copyWith(
+                    Bounceable(onTap: ()async{
+                      final picked=await getCurrentTime(context);
+                      if(picked!=null){
+                        setState(() {
+                          timeOfDay=picked;
+                        });
+                      }
+                    }, child: Text(timeOfDay==null?"Choose Time":
+                      timeOfDay!.format(context),style: theme.textTheme.bodyLarge!.copyWith(
                         color: ColorPallete.primaryColor,fontWeight: FontWeight.w500
                     ),),
                     )
@@ -161,7 +170,8 @@ final GlobalKey <FormState> formKey=GlobalKey <FormState>();
                       eventDescription: _descriptionEditingController.text,
                       eventCategoryImg: categoriesDataList[selectedIndex].imgPath,
                       eventCategoryId: categoriesDataList[selectedIndex].id,
-                      selectedDate: selectedDate!);
+                      selectedDate: selectedDate!,
+                  timeOfDay: timeOfDay!);
                   EasyLoading.show();
                   FirebaseFirestoreUtils.createNewEventTask(eventData).then((value) {
                     EasyLoading.dismiss();
@@ -205,6 +215,15 @@ final GlobalKey <FormState> formKey=GlobalKey <FormState>();
       });
     },);
   }
+Future<TimeOfDay?> getCurrentTime(BuildContext context)async{
+  final TimeOfDay?pickedTime=await showTimePicker(context: context,
+      initialTime: TimeOfDay.now());
+  setState(() {
+
+  });
+  return pickedTime;
+
+}
 
 List<CategoryData>categoriesDataList=[
   CategoryData(

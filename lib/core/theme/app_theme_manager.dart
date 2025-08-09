@@ -57,7 +57,9 @@ abstract class AppThemeManager{
   );
 
   static ThemeData darkTheme=ThemeData(
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
       backgroundColor: ColorPallete.screenDark,
       selectedIconTheme: IconThemeData(
         color: ColorPallete.white,
@@ -79,19 +81,19 @@ abstract class AppThemeManager{
       unselectedItemColor: ColorPallete.white
     ),
       iconTheme: IconThemeData(
-          color:ColorPallete.textColorInDark
+          color:ColorPallete.white
       ),
       primaryColor: ColorPallete.primaryColor,
       scaffoldBackgroundColor: ColorPallete.screenDark,
       textTheme: GoogleFonts.interTextTheme().copyWith(
         bodySmall: GoogleFonts.inter(fontWeight: FontWeight.bold
-            ,fontSize: 12,color: ColorPallete.white),
+            ,fontSize: 12,color: ColorPallete.black),
         bodyMedium: GoogleFonts.inter(fontWeight: FontWeight.bold
-            ,fontSize: 14,color: ColorPallete.white),
+            ,fontSize: 14,color: ColorPallete.black),
         bodyLarge: GoogleFonts.inter(fontWeight: FontWeight.bold
-            ,fontSize: 16,color: ColorPallete.white),
+            ,fontSize: 16,color: ColorPallete.black),
         headlineSmall: GoogleFonts.inter(fontWeight: FontWeight.bold
-            ,fontSize: 20,color: ColorPallete.white),
+            ,fontSize: 20,color: ColorPallete.black),
       ),
       hintColor: ColorPallete.textColorInDark,
       highlightColor: ColorPallete.textColorInDark,

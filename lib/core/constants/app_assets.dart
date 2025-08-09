@@ -6,9 +6,11 @@ abstract class AppAssets {
   static const String sun = "assets/icons/Sun.png";
   static const String moon = "assets/icons/Moon.png";
   static const String appLogoBoarding = "assets/icons/onboarding Icon.png";
-  static const String onBoardingThree = "assets/icons/social-media.png";
-  static const String onBoardingOne = "assets/icons/hot-trending.png";
-  static const String onBoardingTwo = "assets/icons/being-creative.png";
+  static const String onBoardingFour = "assets/icons/social-media.png";
+  static const String onBoardingTwo = "assets/icons/hot-trending.png";
+  static const String onBoardingThree = "assets/icons/being-creative.png";
+  static const String onBoardingOne = "assets/icons/intro1.png";
+
   static const String google = "assets/icons/google.png";
   static const String email = "assets/icons/email.png";
   static const String password = "assets/icons/password.png";
@@ -20,7 +22,6 @@ abstract class AppAssets {
   static const String fav_selected = "assets/icons/favorite_selected.png";
   static const String profile = "assets/icons/profile.png";
   static const String profile_selected = "assets/icons/profile_selected.png";
-  static const String intro1 = "assets/icons/intro1.png";
   static const String all="assets/icons/all.png";
   static const String sport="assets/icons/sports.png";
   static const String birthday="assets/icons/birthday.png";

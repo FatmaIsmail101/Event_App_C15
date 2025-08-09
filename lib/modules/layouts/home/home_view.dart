@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/constants/app_string.dart';
+import 'package:evently/core/providers/theme_provider.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/core/utils/firebase_firestore_uitles.dart';
 import 'package:evently/model/categorie_data.dart';
@@ -7,6 +9,8 @@ import 'package:evently/model/event_data.dart';
 import 'package:evently/modules/layouts/home/widgets/event_card_item.dart';
 import 'package:evently/modules/layouts/home/widgets/tab_bar_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -17,6 +21,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int selectedIndex=0;
+
   List<CategoryData>categoriesDataList=[
     CategoryData(id: "sports",imgPath: "",name: "sports", iconData: Icons.sports_basketball),
     CategoryData(id:"birthday" ,imgPath: "",name: "birthday", iconData: Icons.party_mode),
@@ -33,6 +38,8 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<ThemeProvider>(context);
+
     final theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context);
     return Scaffold(
@@ -45,7 +52,8 @@ class _HomeViewState extends State<HomeView> {
             padding: EdgeInsets.only(
               top: mediaQuery.size.height * .04,
               bottom: 20,
-      left: 10
+                left: 10,
+              right: 10
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),
@@ -65,19 +73,36 @@ class _HomeViewState extends State<HomeView> {
 
                 Row(
                   children: [
-                    Text(AppStrings.name, style: theme.textTheme.titleLarge),
+                    Text(AppStrings.name, style: theme.textTheme.titleLarge!.copyWith(
+                      color: ColorPallete.white
+                    )),
                     Spacer(),
-                    Icon(Icons.wb_sunny_outlined,size: 30,color: ColorPallete.white,),
-                     SizedBox(width: 8,),
-                    Container(padding: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        color: ColorPallete.white,
-                        borderRadius: BorderRadius.circular(6)
+                    Bounceable(onTap: (){
+                      provider.toggleTheme();
 
+                    }, child:Icon(provider.themeMode==ThemeMode.light?
+                    Icons.wb_sunny_outlined:Icons.nightlight,size: 30,color: ColorPallete.white,),
+                    ),
+                     SizedBox(width: 8,),
+                    Bounceable(
+                      onTap: () {
+                        if(context.locale.languageCode=='ar'){
+                          context.setLocale(Locale('en'));
+                        }else{
+                          context.setLocale(Locale('ar'));
+                        }
+                      },
+                      child: Container(padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: ColorPallete.white,
+                          borderRadius: BorderRadius.circular(6)
+
+                        ),
+                        child: Text(context.locale.languageCode=='en'?
+                          AppStrings.en:'ar',style: theme.textTheme.bodyMedium!.copyWith(
+                          color: ColorPallete.primaryColor,fontWeight: FontWeight.w700
+                        ),),
                       ),
-                      child: Text(AppStrings.en,style: theme.textTheme.bodyMedium!.copyWith(
-                        color: ColorPallete.primaryColor,fontWeight: FontWeight.w700
-                      ),),
                     )
                   ],
                 ),
@@ -116,14 +141,14 @@ class _HomeViewState extends State<HomeView> {
                     indicator: BoxDecoration(),
                     dividerColor: Colors.transparent,
                     //padding: EdgeInsets.symmetric(horizontal: 16),
-      labelPadding: EdgeInsets.symmetric(horizontal: 5),
+                labelPadding: EdgeInsets.symmetric(horizontal: 5),
                     tabAlignment: TabAlignment.start,
                     tabs:
-      categoriesDataList.map((data) {
-        return TabBarItemWidget(categoryData: data,
-        isSelected: selectedIndex==
+                categoriesDataList.map((data) {
+                  return TabBarItemWidget(categoryData: data,
+                  isSelected: selectedIndex==
             categoriesDataList.indexOf(data),);
-      },).toList()
+                },).toList()
                 ))
               ],
             ),

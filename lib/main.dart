@@ -5,6 +5,7 @@ import 'package:evently/core/routes/app_routes.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/app_theme_manager.dart';
 import 'package:evently/core/utils/services/loading_services.dart';
+import 'package:evently/core/utils/services/local_storage_services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -15,6 +16,8 @@ import 'firebase_options.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await LocalStorageServices.init();
+  var isFirstTime= LocalStorageServices.getBool("firstSeen")??true;
  await Firebase.initializeApp(
   options:DefaultFirebaseOptions.currentPlatform
 );
@@ -24,13 +27,13 @@ void main() async{
       fallbackLocale: Locale('en'),
       child: ChangeNotifierProvider(
           create:(context)=> ThemeProvider(),
-          child:  MyApp())));
+          child:  MyApp(isFirstTime: isFirstTime,))));
   configLoading();
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+   MyApp({super.key,required this.isFirstTime});
+final bool isFirstTime;
   @override
   Widget build(BuildContext context) {
     var provider=Provider.of<ThemeProvider>(context);

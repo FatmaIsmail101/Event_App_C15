@@ -17,8 +17,8 @@ class LoginView extends StatelessWidget {
   LoginView({super.key});
   bool isVisible = false;
   final GlobalKey<FormState>_globalKey=GlobalKey<FormState>();
-  TextEditingController _emailController=TextEditingController();
-  TextEditingController _passwordController=TextEditingController();
+  final TextEditingController _emailController=TextEditingController();
+  final TextEditingController _passwordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

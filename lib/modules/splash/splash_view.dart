@@ -1,5 +1,6 @@
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
+import 'package:evently/core/utils/services/local_storage_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,8 +15,13 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState(){
     super.initState();
-    Future.delayed(const Duration(seconds: 3),(){
-      Navigator.pushNamed(context, PageRoutesName.intro);
+    Future.delayed(const Duration(seconds: 3),()async{
+      bool isFirstTime=LocalStorageServices.getBool("firstSeen")??true;
+      if(isFirstTime){
+        Navigator.pushReplacementNamed(context, PageRoutesName.onBoardingScreen);
+      }else{
+        Navigator.pushReplacementNamed(context, PageRoutesName.login);
+      }
     });
   }
   @override
