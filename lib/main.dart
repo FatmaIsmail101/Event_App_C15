@@ -1,5 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:evently/core/providers/map_provider.dart';
 import 'package:evently/core/providers/theme_provider.dart';
 import 'package:evently/core/routes/app_routes.dart';
 import 'package:evently/core/routes/page_routes_name.dart';
@@ -21,18 +22,24 @@ void main() async{
  await Firebase.initializeApp(
   options:DefaultFirebaseOptions.currentPlatform
 );
-  runApp(EasyLocalization(
+  runApp(
+      
+      
+      EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations', // <-- change the path of the translation files
       fallbackLocale: Locale('en'),
-      child: ChangeNotifierProvider(
-          create:(context)=> ThemeProvider(),
-          child:  MyApp(isFirstTime: isFirstTime,))));
+      child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_)=>ThemeProvider()),
+            ChangeNotifierProvider(create: (_)=>MapProvider())
+          ],
+          child: MyApp(isFirstTime: isFirstTime,))));
   configLoading();
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key,required this.isFirstTime});
+   const MyApp({super.key,required this.isFirstTime});
 final bool isFirstTime;
   @override
   Widget build(BuildContext context) {

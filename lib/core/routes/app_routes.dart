@@ -3,6 +3,7 @@ import 'package:evently/modules/authontication/pages/LoginView.dart';
 import 'package:evently/modules/authontication/pages/create_account.dart';
 import 'package:evently/modules/authontication/pages/rest_password.dart';
 import 'package:evently/modules/event_creation/event_creation_view.dart';
+import 'package:evently/modules/event_creation/widgets/pick_event_map_screen.dart';
 import 'package:evently/modules/layouts/favorite/favorite_view.dart';
 import 'package:evently/modules/layouts/home/home_view.dart';
 import 'package:evently/modules/layouts/layout_view.dart';
@@ -51,6 +52,9 @@ abstract class AppRoutes{
             settings:settings);
       case PageRoutesName.restPass:
         return MaterialPageRoute(builder: (_)=>RestPassword(),
+            settings:settings);
+      case PageRoutesName.pickEvent:
+        return MaterialPageRoute(builder: (_)=>PickEventMapScreen(),
             settings:settings);
       default:
         return MaterialPageRoute(builder: (_)=>SplashView());

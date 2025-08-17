@@ -12,5 +12,6 @@ abstract class PageRoutesName{
   static const String eventCreationView="/EventCreationView";
   static const String createAccount="/createAccount";
   static const String restPass="/restPass";
+  static const String pickEvent="/pickEvent";
 
 }

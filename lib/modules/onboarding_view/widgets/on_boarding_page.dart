@@ -1,7 +1,6 @@
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/model/on_boarding_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bounceable/flutter_bounceable.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({super.key,required this.onBoardingData});

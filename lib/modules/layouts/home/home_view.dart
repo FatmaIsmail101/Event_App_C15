@@ -147,7 +147,8 @@ class _HomeViewState extends State<HomeView> {
                 categoriesDataList.map((data) {
                   return TabBarItemWidget(categoryData: data,
                   isSelected: selectedIndex==
-            categoriesDataList.indexOf(data),);
+            categoriesDataList.indexOf(data)
+                    ,);
                 },).toList()
                 ))
               ],

@@ -25,7 +25,8 @@ class OnBoardingView extends StatefulWidget {
 
 class _OnBoardingViewState extends State<OnBoardingView> {
   int currentIndex = 0;
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
+  @override
   void initState() {
     super.initState();
     _pageController.addListener(() {
