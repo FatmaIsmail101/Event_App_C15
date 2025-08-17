@@ -62,30 +62,25 @@ class MapProvider extends ChangeNotifier {
     googleMapController.animateCamera(
       CameraUpdate.newCameraPosition(cameraPosition),
     );
-    markers.add(Marker(
-      markerId: MarkerId(UniqueKey().toString()),
-      position: LatLng(
-        locationData.latitude ?? 0,
-        locationData.longitude ?? 0,
+    markers.add(
+      Marker(
+        markerId: MarkerId(UniqueKey().toString()),
+        position: LatLng(
+          locationData.latitude ?? 0,
+          locationData.longitude ?? 0,
+        ),
       ),
-    ),);
+    );
     notifyListeners();
   }
-
-  void setLocationListner(){
-    location.changeSettings(
-      accuracy: LocationAccuracy.high,
-      interval: 1000
-    );
-    location.onLocationChanged.listen((locationData){
+  void setLocationListner() {
+    location.changeSettings(accuracy: LocationAccuracy.high, interval: 1000);
+    location.onLocationChanged.listen((locationData) {
       changeLocationOnMap(locationData);
     });
-
-
   }
-
-  void setEventLocation(LatLng newEventLocation){
-    eventLocation=newEventLocation;
+  void setEventLocation(LatLng newEventLocation) {
+    eventLocation = newEventLocation;
     notifyListeners();
   }
 }

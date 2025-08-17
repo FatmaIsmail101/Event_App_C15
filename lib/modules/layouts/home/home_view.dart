@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/constants/app_string.dart';
 import 'package:evently/core/providers/theme_provider.dart';
+import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/core/utils/firebase_firestore_uitles.dart';
 import 'package:evently/model/categorie_data.dart';
@@ -179,7 +180,13 @@ class _HomeViewState extends State<HomeView> {
           child: ListView.separated(
           padding: EdgeInsets.symmetric(horizontal: 10),
           itemBuilder: (context, index) {
-          return EventCardItem(eventData: eventDataList[index],);
+          return Bounceable(
+              
+              onTap: () { 
+                Navigator.pushNamed(context, PageRoutesName.eventDetails,arguments: index);
+              },
+              child
+              : EventCardItem(eventData: eventDataList[index],));
           },
           separatorBuilder: (context, index) {
           return SizedBox(
