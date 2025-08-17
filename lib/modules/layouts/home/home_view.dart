@@ -180,13 +180,7 @@ class _HomeViewState extends State<HomeView> {
           child: ListView.separated(
           padding: EdgeInsets.symmetric(horizontal: 10),
           itemBuilder: (context, index) {
-          return Bounceable(
-              
-              onTap: () { 
-                Navigator.pushNamed(context, PageRoutesName.eventDetails,arguments: index);
-              },
-              child
-              : EventCardItem(eventData: eventDataList[index],));
+          return EventCardItem(eventData: eventDataList[index],);
           },
           separatorBuilder: (context, index) {
           return SizedBox(

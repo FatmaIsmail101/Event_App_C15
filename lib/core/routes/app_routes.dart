@@ -1,4 +1,5 @@
 import 'package:evently/core/routes/page_routes_name.dart';
+import 'package:evently/model/event_data.dart';
 import 'package:evently/modules/authontication/pages/LoginView.dart';
 import 'package:evently/modules/authontication/pages/create_account.dart';
 import 'package:evently/modules/authontication/pages/rest_password.dart';
@@ -59,6 +60,7 @@ abstract class AppRoutes{
             settings:settings);
 
       case PageRoutesName.eventDetails:
+        final event=settings.arguments as EventData;
         return MaterialPageRoute(builder: (_)=>EventDetails(),
             settings:settings);
       default:

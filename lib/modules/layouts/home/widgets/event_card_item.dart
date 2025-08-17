@@ -5,64 +5,73 @@ import 'package:evently/model/event_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 
+import '../../../../core/routes/page_routes_name.dart';
+
 class EventCardItem extends StatelessWidget {
   final EventData eventData;
-  const EventCardItem({super.key,required this.eventData});
+   EventCardItem({super.key,required this.eventData});
   @override
+  int index=0;
+
   Widget build(BuildContext context) {
     final theme=Theme.of(context);
-
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8,vertical: 8),
-      height: 203,width: 361,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: ColorPallete.primaryColor
+    return Bounceable(
+      onTap: () {
+        Navigator.pushNamed(context, PageRoutesName.eventDetails,
+            arguments: index);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 8,vertical: 8),
+        height: 203,width: 361,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: ColorPallete.primaryColor
+          ),
+          borderRadius: BorderRadius.circular(16),
+          image: DecorationImage(image: AssetImage(eventData.eventCategoryImg,
+          ),fit: BoxFit.cover)
         ),
-        borderRadius: BorderRadius.circular(16),
-        image: DecorationImage(image: AssetImage(eventData.eventCategoryImg,
-        ),fit: BoxFit.cover)
-      ),
-       child: Column(
-         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-         crossAxisAlignment: CrossAxisAlignment.start,
-         children: [
-Container(width: 43,height: 50,
-  decoration:  BoxDecoration(
-    color: ColorPallete.white,
-    borderRadius: BorderRadius.circular(6)
-  ),
-child: Text(
-  textAlign: TextAlign.center,
-  DateFormat("dd MM").format(eventData.selectedDate),style:theme.textTheme.headlineSmall!.copyWith(color:
-ColorPallete.primaryColor,fontWeight: FontWeight.bold,height: 1) ,),
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+      Container(width: 43,height: 50,
+        decoration:  BoxDecoration(
+      color: ColorPallete.white,
+      borderRadius: BorderRadius.circular(6)
+        ),
+      child: Text(
+        textAlign: TextAlign.center,
+        DateFormat("dd MM").format(eventData.selectedDate),style:theme.textTheme.headlineSmall!.copyWith(color:
+      ColorPallete.primaryColor,fontWeight: FontWeight.bold,height: 1) ,),
 
-),
-           Container(
-             width: double.infinity,
-             alignment: Alignment.center,
-             padding: EdgeInsets.symmetric(horizontal: 8,vertical: 6),
-             decoration:  BoxDecoration(
-                 color: ColorPallete.white,
-                 borderRadius: BorderRadius.circular(6)
-             ),
-             child:Row(
-               children: [
-                 Text(eventData.eventTitle,style:theme.textTheme.bodyMedium),
-                 Spacer(),
-                 Bounceable(
-                   onTap: (){
-                     eventData.isFavorite =! eventData.isFavorite;
-                     FirebaseFirestoreUtils.updateEventTasks(eventData: eventData);
-                   },
-                   child: Icon(eventData.isFavorite?Icons.favorite:
-                   Icons.favorite_border,color: ColorPallete.primaryColor,),
-                 )
-               ],
-             ) ,
-           )
-         ],
-       ),
+      ),
+             Container(
+               width: double.infinity,
+               alignment: Alignment.center,
+               padding: EdgeInsets.symmetric(horizontal: 8,vertical: 6),
+               decoration:  BoxDecoration(
+                   color: ColorPallete.white,
+                   borderRadius: BorderRadius.circular(6)
+               ),
+               child:Row(
+                 children: [
+                   Text(eventData.eventTitle,style:theme.textTheme.bodyMedium),
+                   Spacer(),
+                   Bounceable(
+                     onTap: (){
+                       eventData.isFavorite =! eventData.isFavorite;
+                       FirebaseFirestoreUtils.updateEventTasks(eventData: eventData);
+                     },
+                     child: Icon(eventData.isFavorite?Icons.favorite:
+                     Icons.favorite_border,color: ColorPallete.primaryColor,),
+                   )
+                 ],
+               ) ,
+             )
+           ],
+         ),
+      ),
     );
   }
 }
