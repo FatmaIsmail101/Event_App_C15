@@ -88,8 +88,18 @@ class _EventDetailsState extends State<EventDetails> {
                       ),
                     ),
 
-                    Text("${data.selectedDate}" ,style: theme.textTheme.bodyLarge
-                      !.copyWith(color: ColorPallete.primaryColor),),
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text("${data.selectedDate.day}-${data.selectedDate.month}-${data.selectedDate.year}" ,style: theme.textTheme.bodyLarge
+                            !.copyWith(color: ColorPallete.primaryColor),),
+                        ),
+                        Text("${data.selectedDate.hour}:${data.selectedDate.minute}:${data.selectedDate.second}" ,style: theme.textTheme.bodyLarge
+                        !.copyWith(color: ColorPallete.black),),
+
+                      ],
+                    ),
                   ],
                 ),
               ),
