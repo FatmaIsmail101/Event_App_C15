@@ -7,6 +7,7 @@ import 'package:evently/modules/event_creation/event_creation_view.dart';
 import 'package:evently/modules/event_creation/widgets/pick_event_map_screen.dart';
 import 'package:evently/modules/layouts/favorite/favorite_view.dart';
 import 'package:evently/modules/layouts/home/home_view.dart';
+import 'package:evently/modules/layouts/home/widgets/eventUpdate.dart';
 import 'package:evently/modules/layouts/home/widgets/event_details.dart';
 import 'package:evently/modules/layouts/layout_view.dart';
 import 'package:evently/modules/layouts/map/map_view.dart';
@@ -60,8 +61,10 @@ abstract class AppRoutes{
             settings:settings);
 
       case PageRoutesName.eventDetails:
-        final event=settings.arguments as EventData;
         return MaterialPageRoute(builder: (_)=>EventDetails(),
+            settings:settings);
+      case PageRoutesName.eventUpdate:
+        return MaterialPageRoute(builder: (_)=>EventUpdate(),
             settings:settings);
       default:
         return MaterialPageRoute(builder: (_)=>SplashView());

@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/constants/app_string.dart';
 import 'package:evently/core/providers/theme_provider.dart';
-import 'package:evently/core/routes/page_routes_name.dart';
 import 'package:evently/core/theme/color_pallete.dart';
 import 'package:evently/core/utils/firebase_firestore_uitles.dart';
 import 'package:evently/model/categorie_data.dart';
@@ -196,6 +195,8 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+
+
 /*
 FutureBuilder <List<EventData>>(future: FirebaseFirestoreUtils.getEventTasksList(),
               builder: (context, snapshot) {

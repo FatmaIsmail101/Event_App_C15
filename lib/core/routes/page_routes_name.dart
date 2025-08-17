@@ -14,6 +14,8 @@ abstract class PageRoutesName{
   static const String restPass="/restPass";
   static const String pickEvent="/pickEvent";
   static const String eventDetails="/eventDetails";
+  static const String eventUpdate="/eventUpdate";
+
 
 
 }

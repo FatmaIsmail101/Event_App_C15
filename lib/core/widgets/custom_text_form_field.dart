@@ -12,9 +12,11 @@ class CustomTextFormField extends StatefulWidget {
   final void Function(String)? onFieldSubmitted;
 final int? maxLines;
 final int? miniLines;
+final Widget? child;
 final String? Function(String?)?validator;
   const CustomTextFormField({
     super.key,
+    this.child,
      this.prefixIcon,
      this.hintText,
     this.textEditingController,
@@ -87,6 +89,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           borderSide: BorderSide(color: Colors.red),
         ),
       ),
+
     );
   }
 }

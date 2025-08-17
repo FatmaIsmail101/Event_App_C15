@@ -13,12 +13,13 @@ class EventCardItem extends StatelessWidget {
   @override
   int index=0;
 
+  @override
   Widget build(BuildContext context) {
     final theme=Theme.of(context);
     return Bounceable(
       onTap: () {
         Navigator.pushNamed(context, PageRoutesName.eventDetails,
-            arguments: index);
+            arguments: eventData);
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8,vertical: 8),

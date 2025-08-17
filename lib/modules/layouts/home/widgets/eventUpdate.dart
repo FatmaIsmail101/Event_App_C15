@@ -14,24 +14,26 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/utils/services/snack_bar_services.dart';
-import '../../model/categorie_data.dart';
+import '../../../../core/utils/services/snack_bar_services.dart';
+import '../../../../model/categorie_data.dart';
 
-class EventCreationView extends StatefulWidget {
-  const EventCreationView({super.key});
+
+class EventUpdate extends StatefulWidget {
+  const EventUpdate({super.key});
 
   @override
-  State<EventCreationView> createState() => _EventCreationViewState();
+  State<EventUpdate> createState() => _EventUpdateState();
 }
 
-class _EventCreationViewState extends State<EventCreationView> {
+class _EventUpdateState extends State<EventUpdate> {
+  bool isInit=false;
   int selectedIndex = 0;
   DateTime? selectedDate;
   //TimeOfDay? timeOfDay;
   late MapProvider mapProvider;
   final TextEditingController _titleEditingController = TextEditingController();
   final TextEditingController _descriptionEditingController =
-      TextEditingController();
+  TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -41,16 +43,35 @@ class _EventCreationViewState extends State<EventCreationView> {
     mapProvider.getLocation();
     mapProvider.setLocationListner();
   }
+  void didChangeDependencies(){
+    super.didChangeDependencies();
+  if(!isInit){
+    final data=ModalRoute.of(context)!.settings.arguments as EventData;
+
+    _titleEditingController.text=data.eventTitle;
+    _descriptionEditingController.text=data.eventDescription;
+    isInit=true;
+
+  }
+
+  }
+  void dispose(){
+    super.dispose();
+    _titleEditingController.dispose();
+    _descriptionEditingController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final data=ModalRoute.of(context)!.settings.arguments as EventData;
+
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: ColorPallete.screenLight,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          AppStrings.createEvent,
+          "Update Event",
           style: theme.textTheme.titleLarge!.copyWith(
             color: ColorPallete.primaryColor,
             fontWeight: FontWeight.w500,
@@ -88,7 +109,7 @@ class _EventCreationViewState extends State<EventCreationView> {
                       return CreateEventTabBarItemWidget(
                         categoryData: data,
                         isSelected:
-                            selectedIndex == categoriesDataList.indexOf(data),
+                        selectedIndex == categoriesDataList.indexOf(data),
                       );
                     }).toList(),
                   ),
@@ -126,18 +147,16 @@ class _EventCreationViewState extends State<EventCreationView> {
                   children: [
                     Icon(Icons.calendar_month),
                     SizedBox(width: 5),
-                    Text(AppStrings.eventDate),
+                    Text("Event Date"),
                     Spacer(),
                     Bounceable(
                       onTap: () {
                         getCurrentDate();
                       },
                       child: Text(
-                        selectedDate == null
-                            ? "Choose Date"
-                            : DateFormat(
-                                "yyy-MM-dd",
-                              ).format(selectedDate!).toString(),
+                          "${data.selectedDate.day}-${data.selectedDate.month}-${data.selectedDate.year}",
+                        softWrap: true
+                        ,
                         style: theme.textTheme.bodyLarge!.copyWith(
                           color: ColorPallete.primaryColor,
                           fontWeight: FontWeight.w500,
@@ -162,9 +181,9 @@ class _EventCreationViewState extends State<EventCreationView> {
                         }
                       },
                       child: Text(
-                        //timeOfDay==null?
-                        "Choose Time",
-                        //timeOfDay!.format(context)
+                        "${data.selectedDate.hour}:${data.selectedDate.minute}:${data.selectedDate.second}",
+                        softWrap: true
+                        ,
                         style: theme.textTheme.bodyLarge!.copyWith(
                           color: ColorPallete.primaryColor,
                           fontWeight: FontWeight.w500,
@@ -173,48 +192,34 @@ class _EventCreationViewState extends State<EventCreationView> {
                     ),
                   ],
                 ),
-
-                Consumer<MapProvider>(
-                  builder: (context, value, child) => CustomButtonStyle(
-                    onTap: () {
-                      Navigator.pushNamed(context, PageRoutesName.pickEvent);
-                    },
-                    color: ColorPallete.white,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
+               Text("Location",style: theme.textTheme.bodyLarge,),
+                Container(
+                  width: double.infinity,height:64 ,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: ColorPallete.primaryColor)
+                  ),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: 48,height: 48,
+                          decoration: BoxDecoration(
                               color: ColorPallete.primaryColor,
-                            ),
-                            child: Icon(
-                              Icons.my_location,
-                              size: 30,
-                              color: ColorPallete.white,
-                            ),
+                              borderRadius: BorderRadius.circular(8)
                           ),
-                          SizedBox(width: 10),
-                          Text(
-                            mapProvider.eventLocation == null
-                                ? "Choose Event Location"
-                                : "${mapProvider.eventLocation!.latitude.toString()},${mapProvider.eventLocation!.longitude.toString()}",
-                            style: theme.textTheme.bodyLarge!.copyWith(
-                              color: ColorPallete.primaryColor,
-                            ),
-                          ),
-                          Spacer(),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: ColorPallete.primaryColor,
-                          ),
-                        ],
+                          child: Icon(Icons.gps_fixed_outlined,color: ColorPallete.white,
+                            size: 30,),
+                        ),
                       ),
-                    ),
+
+                      Text("${data.lat},${data.long}" ,style: theme.textTheme.bodyLarge
+                      !.copyWith(color: ColorPallete.primaryColor),),
+                    ],
                   ),
                 ),
+
                 SizedBox(height: 150),
               ],
             ),
@@ -226,50 +231,41 @@ class _EventCreationViewState extends State<EventCreationView> {
         child: SizedBox(
           width: double.infinity,
           child: CustomButtonStyle(
-            onTap: () {
+            onTap: () async {
+              print("Button Tapped");
               if (formKey.currentState!.validate()) {
-                if (selectedDate != null) {
-                  var eventData = EventData(
-                    eventTitle: _titleEditingController.text,
-                    eventDescription: _descriptionEditingController.text,
-                    eventCategoryImg: categoriesDataList[selectedIndex].imgPath,
-                    eventCategoryId: categoriesDataList[selectedIndex].id,
-                    selectedDate: selectedDate!,
-                    lat: mapProvider.eventLocation?.latitude??0,
-                      long: mapProvider.eventLocation?.longitude??0
-                    // timeOfDay: timeOfDay!
-                  );
-                  EasyLoading.show();
-                  FirebaseFirestoreUtils.createNewEventTask(eventData).then((
-                    value,
-                  ) {
-                    EasyLoading.dismiss();
-                    if (value) {
-                      Navigator.pop(context);
-                      SnackBarServices.showSucessMessage(
-                        "Event is created sucessfully",
-                      );
-                    } else {
-                      SnackBarServices.showWarningMessage(
-                        msg: "Something went wrong",
-                      );
-                    }
-                  });
-                }
+                // لو المستخدم ما اختارش تاريخ جديد، خدي القديم
+                selectedDate ??= data.selectedDate;
+
+                var updateEvent = EventData(
+                  eventId: data.eventId,
+                  eventTitle: _titleEditingController.text,
+                  eventDescription: _descriptionEditingController.text,
+                  eventCategoryImg: categoriesDataList[selectedIndex].imgPath,
+                  eventCategoryId: categoriesDataList[selectedIndex].id,
+                  selectedDate: selectedDate!,
+                  lat: mapProvider.eventLocation?.latitude ?? data.lat,
+                  long: mapProvider.eventLocation?.longitude ?? data.long,
+                );
+
+                EasyLoading.show(status: "Updating...");
+                await FirebaseFirestoreUtils.updateEventTasks(eventData: updateEvent);
+                EasyLoading.dismiss();
+
+                Navigator.pop(context,true);
               }
             },
             color: ColorPallete.primaryColor,
             child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(
-                "Add Event",
-                style: theme.textTheme.titleSmall!.copyWith(
-                  color: ColorPallete.white,
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                    "Update Event",
+                    style: theme.textTheme.titleSmall!.copyWith(
+                      color: ColorPallete.white,
+                    ),
+                    ),
                 ),
-              ),
-            ),
-          ),
-        ),
+          ),        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
