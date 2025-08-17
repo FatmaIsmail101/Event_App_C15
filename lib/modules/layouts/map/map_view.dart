@@ -37,8 +37,8 @@ class _MapViewState extends State<MapView> {
                   Expanded(
                     child: GoogleMap(
                       markers: provider.markers,
-                      onMapCreated: (mapController){
-                        provider.googleMapController=mapController;
+                      onMapCreated: (mapController) {
+                        provider.googleMapController = mapController;
                       },
                       mapType: MapType.normal,
                       initialCameraPosition: provider.cameraPosition,
@@ -51,21 +51,24 @@ class _MapViewState extends State<MapView> {
           floatingActionButton: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              width: 54,height: 54,
+              width: 54,
+              height: 54,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),color: ColorPallete.primaryColor
+                borderRadius: BorderRadius.circular(16),
+                color: ColorPallete.primaryColor,
               ),
               child: CustomButtonStyle(
-                onTap: (){
+                onTap: () {
                   mapProvider.getLocation();
                 },
-                  child: Center(
-                child: Icon(Icons.gps_fixed_outlined,color: ColorPallete.white,
-                  size: 30,
+                child: Center(
+                  child: Icon(
+                    Icons.gps_fixed_outlined,
+                    color: ColorPallete.white,
+                    size: 30,
+                  ),
                 ),
-
-              )),
-
+              ),
             ),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endTop,

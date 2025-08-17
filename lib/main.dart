@@ -20,11 +20,10 @@ void main() async{
   await LocalStorageServices.init();
   var isFirstTime= LocalStorageServices.getBool("firstSeen")??true;
  await Firebase.initializeApp(
-  options:DefaultFirebaseOptions.currentPlatform
+  options:DefaultFirebaseOptions.currentPlatform,
+
 );
   runApp(
-      
-      
       EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations', // <-- change the path of the translation files

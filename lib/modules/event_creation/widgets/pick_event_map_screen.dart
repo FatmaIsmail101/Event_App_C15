@@ -13,19 +13,19 @@ class PickEventMapScreen extends StatefulWidget {
 }
 
 class _PickEventMapScreenState extends State<PickEventMapScreen> {
-   late MapProvider mapProvider;
   @override
   void initState() {
-
     super.initState();
 
-    MapProvider mapProvider = Provider.of<MapProvider>(context, listen: false);
-   mapProvider.getLocation();
-    mapProvider.setLocationListner();
+
   }
+
   @override
   Widget build(BuildContext context) {
-    final theme=Theme.of(context);
+    MapProvider mapProvider = Provider.of<MapProvider>(context, listen: false);
+    mapProvider.getLocation();
+    mapProvider.setLocationListner();
+    final theme = Theme.of(context);
     return Consumer<MapProvider>(
       builder: (BuildContext context, provider, Widget? child) {
         return Column(
@@ -34,13 +34,13 @@ class _PickEventMapScreenState extends State<PickEventMapScreen> {
           children: [
             Expanded(
               child: GoogleMap(
-                onTap: (location){
+                onTap: (location) {
                   provider.setEventLocation(location);
                   Navigator.pop(context);
                 },
                 markers: provider.markers,
-                onMapCreated: (mapController){
-                  provider.googleMapController=mapController;
+                onMapCreated: (mapController) {
+                  provider.googleMapController = mapController;
                 },
                 mapType: MapType.normal,
                 initialCameraPosition: provider.cameraPosition,
@@ -48,12 +48,15 @@ class _PickEventMapScreenState extends State<PickEventMapScreen> {
             ),
             Container(
               alignment: Alignment.center,
-              width: double.infinity,height: 60,
+              width: double.infinity,
+              height: 60,
               color: ColorPallete.primaryColor,
-              child: Text("Tap on Location To Select"
-                ,style: theme.textTheme.headlineSmall,
-                textAlign: TextAlign.center,),
-            )
+              child: Text(
+                "Tap on Location To Select",
+                style: theme.textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
+            ),
           ],
         );
       },
