@@ -166,7 +166,9 @@ class LoginView extends StatelessWidget {
                     width: double.infinity,
                     child: CustomButtonStyle(
                       heroTag: "login",
-                      onTap: () {},
+                      onTap: () {
+                        FirebaseAuthUtil.loginWithGoogle(context);
+                      },
                      color: ColorPallete.screenLight,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

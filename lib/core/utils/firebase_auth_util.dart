@@ -1,6 +1,11 @@
 import 'dart:developer';
 
+import 'package:evently/core/routes/page_routes_name.dart';
+import 'package:evently/core/utils/services/snack_bar_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class FirebaseAuthUtil{
   static Future <bool>createUserWithEmailandpass({
@@ -46,5 +51,35 @@ abstract class FirebaseAuthUtil{
       print(e);
     }
     return Future.value(false);
+  }
+
+  static final GoogleSignIn _googleSignIn=GoogleSignIn.instance;
+
+  static Future<UserCredential?> signInWithGoogle() async {
+try{
+  await _googleSignIn.initialize(
+serverClientId: dotenv.env['SERVER_CLIENT_ID']
+  );
+  final GoogleSignInAccount result= await _googleSignIn.authenticate();
+  final googleAuth=result.authentication;
+  final credential = GoogleAuthProvider.credential(idToken: googleAuth.idToken);
+  return await FirebaseAuth.instance.signInWithCredential(credential);
+
+}
+catch(e){
+  print("Google sign-in error : $e");
+  return null;
+}
+  }
+
+ static Future <void>loginWithGoogle(BuildContext context)async{
+    try{
+      await signInWithGoogle();
+      SnackBarServices.showSucessMessage("Login in Successfully");
+      Navigator.pushNamed(context, PageRoutesName.layout);
+    }
+        catch(e){
+      SnackBarServices.showWarningMessage(msg: e.toString());
+        }
   }
 }
