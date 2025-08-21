@@ -29,6 +29,7 @@ class _EventDetailsState extends State<EventDetails> {
     mapProvider.setLocationListner();
   }
 
+  @override
   Widget build(BuildContext context) {
     final theme=Theme.of(context);
     final data=ModalRoute.of(context)!.settings.arguments

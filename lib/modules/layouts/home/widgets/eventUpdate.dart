@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/constants/app_assets.dart';
 import 'package:evently/core/constants/app_string.dart';
 import 'package:evently/core/providers/map_provider.dart';
@@ -14,7 +13,6 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/utils/services/snack_bar_services.dart';
 import '../../../../model/categorie_data.dart';
 
 
@@ -39,10 +37,11 @@ class _EventUpdateState extends State<EventUpdate> {
   @override
   void initState() {
     super.initState();
-     mapProvider = Provider.of<MapProvider>(context, listen: false);
+    mapProvider = Provider.of<MapProvider>(context, listen: false);
     mapProvider.getLocation();
     mapProvider.setLocationListner();
   }
+  @override
   void didChangeDependencies(){
     super.didChangeDependencies();
   if(!isInit){
@@ -55,6 +54,7 @@ class _EventUpdateState extends State<EventUpdate> {
   }
 
   }
+  @override
   void dispose(){
     super.dispose();
     _titleEditingController.dispose();
@@ -199,24 +199,46 @@ class _EventUpdateState extends State<EventUpdate> {
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(color: ColorPallete.primaryColor)
                   ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 48,height: 48,
-                          decoration: BoxDecoration(
+                  child: Consumer<MapProvider>(
+                    builder: (context, value, child) => CustomButtonStyle(
+                      onTap: () {
+                        Navigator.pushNamed(context, PageRoutesName.pickEvent);
+                      },
+                      color: ColorPallete.white,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6),
+                                color: ColorPallete.primaryColor,
+                              ),
+                              child: Icon(
+                                Icons.my_location,
+                                size: 30,
+                                color: ColorPallete.white,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              mapProvider.eventLocation == null
+                                  ? "Choose Event Location"
+                                  : "${value.eventLocation!.latitude.toString()},${value.eventLocation!.longitude.toString()}",
+                              style: theme.textTheme.bodyLarge!.copyWith(
+                                color: ColorPallete.primaryColor,
+                              ),
+                            ),
+                            Spacer(),
+                            Icon(
+                              Icons.arrow_forward_ios,
                               color: ColorPallete.primaryColor,
-                              borderRadius: BorderRadius.circular(8)
-                          ),
-                          child: Icon(Icons.gps_fixed_outlined,color: ColorPallete.white,
-                            size: 30,),
+                            ),
+                          ],
                         ),
                       ),
-
-                      Text("${data.lat},${data.long}" ,style: theme.textTheme.bodyLarge
-                      !.copyWith(color: ColorPallete.primaryColor),),
-                    ],
+                    ),
                   ),
                 ),
 

@@ -200,7 +200,7 @@ class _EventCreationViewState extends State<EventCreationView> {
                           Text(
                             mapProvider.eventLocation == null
                                 ? "Choose Event Location"
-                                : "${mapProvider.eventLocation!.latitude.toString()},${mapProvider.eventLocation!.longitude.toString()}",
+                                : "${value.eventLocation!.latitude.toString()},${value.eventLocation!.longitude.toString()}",
                             style: theme.textTheme.bodyLarge!.copyWith(
                               color: ColorPallete.primaryColor,
                             ),

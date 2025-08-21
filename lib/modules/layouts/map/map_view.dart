@@ -59,7 +59,7 @@ class _MapViewState extends State<MapView> {
               ),
               child: CustomButtonStyle(
                 onTap: () {
-                  mapProvider.getLocation();
+                  provider.getLocation();
                 },
                 child: Center(
                   child: Icon(
