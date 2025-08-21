@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/providers/map_provider.dart';
 import '../../../../core/utils/firebase_firestore_uitles.dart';
+import 'date_time_card.dart';
 
 
 class EventDetails extends StatefulWidget {
@@ -36,7 +37,9 @@ class _EventDetailsState extends State<EventDetails> {
     as   EventData;
 
     return  Scaffold(
+      backgroundColor: ColorPallete.screenLight,
       appBar: AppBar(
+        foregroundColor: ColorPallete.screenLight,
         centerTitle: true,
         title: Text("Event Details",style: theme.textTheme.headlineSmall!.copyWith(
           color: ColorPallete.primaryColor
@@ -68,42 +71,7 @@ class _EventDetailsState extends State<EventDetails> {
                   child: Image.asset(data.eventCategoryImg)),
               Text(data.eventTitle,style: theme.textTheme.titleLarge!.
                 copyWith(color: ColorPallete.primaryColor,fontWeight: FontWeight.w500),),
-              Container(
-                width: double.infinity,height:64 ,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: ColorPallete.primaryColor)
-                ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 48,height: 48,
-                        decoration: BoxDecoration(
-                          color: ColorPallete.primaryColor,
-                          borderRadius: BorderRadius.circular(8)
-                        ),
-                        child: Icon(Icons.calendar_month,color: ColorPallete.white,
-                        size: 35,),
-                      ),
-                    ),
-
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Text("${data.selectedDate.day}-${data.selectedDate.month}-${data.selectedDate.year}" ,style: theme.textTheme.bodyLarge
-                            !.copyWith(color: ColorPallete.primaryColor),),
-                        ),
-                        Text("${data.selectedDate.hour}:${data.selectedDate.minute}:${data.selectedDate.second}" ,style: theme.textTheme.bodyLarge
-                        !.copyWith(color: ColorPallete.black),),
-
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              DateTimeCard(dateTime: data.selectedDate,),
               Container(
                 width: double.infinity,height:64 ,
                 decoration: BoxDecoration(
@@ -126,11 +94,13 @@ class _EventDetailsState extends State<EventDetails> {
                     ),
 
                     Text("${data.lat},${data.long}" ,style: theme.textTheme.bodyLarge
-                    !.copyWith(color: ColorPallete.primaryColor),),
+                    !.copyWith(color: ColorPallete.primaryColor,
+                    ),),
                   ],
                 ),
               ),
               Container(
+                clipBehavior: Clip.antiAlias,
                 width: double.infinity,
                 height: 361,
                 decoration: BoxDecoration(
@@ -169,3 +139,43 @@ class _EventDetailsState extends State<EventDetails> {
     );
   }
 }
+//              DateTimeCard(dateTime: data.selectedDate,),
+
+/*
+Container(
+                width: double.infinity,height:64 ,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: ColorPallete.primaryColor)
+                ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 48,height: 48,
+                        decoration: BoxDecoration(
+                          color: ColorPallete.primaryColor,
+                          borderRadius: BorderRadius.circular(8)
+                        ),
+                        child: Icon(Icons.calendar_month,color: ColorPallete.white,
+                        size: 35,),
+                      ),
+                    ),
+
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text("${data.selectedDate.day}-${data.selectedDate.month}-${data.selectedDate.year}" ,style: theme.textTheme.bodyLarge
+                            !.copyWith(color: ColorPallete.primaryColor),),
+                        ),
+                        Text("${data.selectedDate.hour}:${data.selectedDate.minute}:${data.selectedDate.second}" ,style: theme.textTheme.bodyLarge
+                        !.copyWith(color: ColorPallete.black),),
+
+                      ],
+                    ),
+                  ],
+                ),
+              )
+ */
