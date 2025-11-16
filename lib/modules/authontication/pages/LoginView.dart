@@ -15,7 +15,6 @@ import '../../../core/utils/firebase_auth_util.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
-  bool isVisible = false;
   final GlobalKey<FormState>_globalKey=GlobalKey<FormState>();
   final TextEditingController _emailController=TextEditingController();
   final TextEditingController _passwordController=TextEditingController();
